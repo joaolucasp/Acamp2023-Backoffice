@@ -1,0 +1,97 @@
+:root {
+    --bottomMenu-height: 70px;
+    --item-menu-height: 100%;
+    --item-menu-icons-size: 25px;
+}
+
+*, a {
+    margin: 0px;
+    padding: 0px;
+}
+
+#bottomMenu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: var(--mainContainer-extra-small);
+    height: var(--bottomMenu-height);
+    background: var(--primary-color);
+    padding: 10px;
+}
+
+.section-buttons {
+    width: 70%;
+    height: var(--item-menu-height);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-menu {
+    width: 70px;
+    height: var(--item-menu-height);
+    color: var(--white);
+    margin: 0px;
+}
+
+/*Class activated when clicked*/
+.actived {
+    background: var(--secondary-color);
+    border-radius: 10px;
+    color: #000;
+}
+
+.item-menu i span {
+    display: block;
+    margin-top: 3px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.item-menu i {
+    font-size: var(--item-menu-icons-size);
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #bottomMenu {
+        width: var(--mainContainer-small);
+        position: fixed;
+        bottom: 5%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #bottomMenu {
+        width: var(--mainContainer-medium);
+        position: fixed;
+        bottom: 5%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    #bottomMenu {
+        width: var(--mainContainer-large);
+        position: fixed;
+        bottom: 5%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    #bottomMenu {
+        width: var(--mainContainer-extra-large);
+        position: fixed;
+        bottom: 5%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
