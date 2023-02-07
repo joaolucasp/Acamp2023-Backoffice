@@ -52,6 +52,13 @@
     font-size: var(--item-menu-icons-size);
 }
 
+/*Extre small devices (mode landscape)*/
+@media (min-height: 0px) and (max-height: 600px) {
+    #bottomMenu {
+        display: none;
+    }
+}
+
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) and (max-width: 767.98px) {
     #bottomMenu {
