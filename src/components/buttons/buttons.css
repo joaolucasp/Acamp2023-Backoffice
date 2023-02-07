@@ -1,0 +1,28 @@
+:root {
+    --buttons-widht: 70%;
+    --buttons-height: 40px;
+}
+
+.button-primary {
+    width: var(--buttons-widht);
+    height: var(--buttons-height);
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 50px;
+    text-transform: uppercase;
+    justify-self: center;
+}
+
+.button-secondary {
+    width: var(--buttons-widht);
+    height: var(--buttons-height);
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 50px;
+    justify-self: center;
+}
+
+.btn span {
+    text-transform: uppercase;
+    font-weight: semi-bold;
+}

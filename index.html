@@ -19,8 +19,11 @@
     <!-- Imports Style CSS -->
     <link rel="stylesheet" href="src/pages/scan/stylesheet/style.css" type="text/css">
     <link rel="stylesheet" href="src/components/bottom-menu/bottom-menu.css" type="text/css">
-    <link rel="stylesheet" href="src/utils/color.css" type="text/css">
     <link rel="stylesheet" href="src/components/header/header.css" type="text/css">
+    <link rel="stylesheet" href="src/utils/color.css" type="text/css">
+
+    <link rel="stylesheet" href="src/components/main-image-page/main-image-page.css">
+    <link rel="stylesheet" href="src/components/buttons/buttons.css" type="text/css">
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/eac825cd8d.js" crossorigin="anonymous"></script>
@@ -32,34 +35,66 @@
 </head>
 
 <body>
-    <section id="mainContainer" class="container text-center">
-        <header id="header">
-            <img class="img-fluid" src="public/deeper-white.png" alt="">
-        </header>
+    <header id="header">
+        <img class="img-fluid" src="public/deeper-white.png" alt="">
+    </header>
 
-        <nav id="bottomMenu" class="navbar">
-            <div class="section-buttons">
-                <a class="actived item-menu navbar-brand" href="#">
-                    <i class="fa-sharp fa-solid fa-qrcode" color="">
-                        <span>Scan</span>
-                    </i>
-                </a>
+    <section id="mainContainer" class="container">
+        <div class="row">
+            <section id="pageContent">
+                <div id="mainImagePage" class="container">
+                    <img class="img-fluid" src="src/assets/images/qr_code.png" alt="">
+                </div>
 
-                <a class="item-menu navbar-brand" href="#">
-                    <i class="fa-solid fa-circle-user">
-                        <span>Dados</span>
-                    </i>
-                </a>
+                <p class="mt-4 mb-3">
+                    Nesta aba você pode <strong>realizar Check-in's</strong>, registrando a <strong>entrada</strong> de um acampante no acampamento!
 
-                <a class="item-menu navbar-brand" href="#">
-                    <i class="fa-solid fa-church">
-                        <span>Igreja</span>
-                    </i>
-                </a>
-            </div>
+                    <br><br>
+                    
+                    Para isso, basta escanear o <strong>QR Code</strong> que foi enviado ao acampante ou digitar o código manualmente.
+                </p>
 
-        </nav>
+                <div class="container d-grid gap-2">
+                    <button type="button" class="btn button-primary">
+                        <i class="fa-solid fa-camera"></i>
+                        <span>Abrir câmera</span>
+                    </button>
+
+                    <button type="button" class="btn button-secondary">
+                        <i class="fa-solid fa-hashtag"></i>
+                        <span>Digitar o código</span>
+                    </button>
+                </div>
+
+
+            </section>
+        </div>
+
+
     </section>
+
+    <nav id="bottomMenu" class="navbar">
+        <div class="section-buttons">
+            <a class="actived item-menu navbar-brand" href="#">
+                <i class="fa-sharp fa-solid fa-qrcode" color="">
+                    <span>Check-in</span>
+                </i>
+            </a>
+
+            <a class="item-menu navbar-brand" href="#">
+                <i class="fa-solid fa-circle-user">
+                    <span>Dados</span>
+                </i>
+            </a>
+
+            <a class="item-menu navbar-brand" href="#">
+                <i class="fa-solid fa-church">
+                    <span>Igreja</span>
+                </i>
+            </a>
+        </div>
+    </nav>
+
 </body>
 
 </html>

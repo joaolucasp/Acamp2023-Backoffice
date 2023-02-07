@@ -1,0 +1,11 @@
+:root {
+    --mainImagePage--size: 50%;
+    --mainImagePage--bg-color: #2e61989d;
+}
+
+#mainImagePage {
+    width: var(--mainImagePage--size);
+    background: var(--mainImagePage--bg-color);
+    padding: 50px;
+    border-radius: 40px;
+}
