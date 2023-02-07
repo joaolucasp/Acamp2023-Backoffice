@@ -18,18 +18,20 @@
   font-family: montserrat, arial, verdana;
 }
 
-body {
+html, body {
   background: var(--secondary-color);
   display: flex;
   justify-content: center;
   justify-self: center;
   align-items: center;
   text-align: center;
+  height: 100%;
+  width: 100%;
 }
 
 /*Main Container and Forms*/
 #mainContainer{
-  height: 100vh;
+  height: 100%;
   max-width: var(--mainContainer-extra-small);
   background: var(--secondary-color);
   display: flex;
