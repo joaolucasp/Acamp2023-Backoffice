@@ -19,7 +19,7 @@
 }
 
 html, body {
-  background: var(--secondary-color);
+  background: var(--primary-color);
   display: flex;
   justify-content: center;
   justify-self: center;
@@ -33,16 +33,16 @@ html, body {
 #mainContainer{
   height: 100%;
   max-width: var(--mainContainer-extra-small);
-  background: var(--secondary-color);
+  background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 15%, var(--secondary-color) 85%, var(--primary-color));
   display: flex;
   flex-direction: column;
   justify-content: center;
   justify-self: center;
-  padding-top: 90px;
-  padding-bottom: 80px;
 }
 
 #pageContent {
+  padding-top: 90px;
+  padding-bottom: 80px;
   max-width: var(--mainContainer-extra-small);
 }
 /*--------------*/

@@ -17,50 +17,63 @@
 
 
     <!-- Imports Style CSS -->
-    <link rel="stylesheet" href="src/pages/stylesheet/default-content.css" type="text/css">
-    <link rel="stylesheet" href="src/components/bottom-menu/bottom-menu.css" type="text/css">
-    <link rel="stylesheet" href="src/components/header/header.css" type="text/css">
-    <link rel="stylesheet" href="src/utils/color.css" type="text/css">
+    <link rel="stylesheet" href="../stylesheet/default-content.css" type="text/css">
+    <link rel="stylesheet" href="../../components/bottom-menu/bottom-menu.css" type="text/css">
+    <link rel="stylesheet" href="../../components/header/header.css" type="text/css">
+    <link rel="stylesheet" href="../../utils/color.css" type="text/css">
 
-    <link rel="stylesheet" href="src/components/main-image-page/main-image-page.css">
-    <link rel="stylesheet" href="src/components/buttons/buttons.css" type="text/css">
+    <link rel="stylesheet" href="../../components/main-image-page/main-image-page.css">
+    <link rel="stylesheet" href="../../components/buttons/buttons.css" type="text/css">
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/eac825cd8d.js" crossorigin="anonymous"></script>
 
     <!-- Shortcut Icon -->
-    <link rel="shortcut icon" href="public/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../public/logo.png" type="image/x-icon">
 
     <title>APP Backoffice Acamp2023</title>
 </head>
 
 <body>
     <header id="header">
-        <img class="img-fluid" src="public/deeper-white.png" alt="">
+        <img class="img-fluid" src="../../../public/deeper-white.png" alt="">
     </header>
 
     <section id="mainContainer" class="container">
         <div class="row">
             <section id="pageContent">
                 <div id="mainImagePage" class="container">
-                    <img class="img-fluid" src="public/logo-branco.png" alt="">
+                    <img class="img-fluid" src="../../assets/images/qr_code.png" alt="">
                 </div>
 
-                <h3 class="mt-4 mb-3">
-                    Bem vindo(a) ao <strong>Backoffice</strong> do Acampamento 2023!
-                </h3>
-
                 <p class="mt-4 mb-3">
-                    Aqui você poderá gerenciar os dados dos participantes do Acampamento 2023.
+                    Nesta aba você pode <strong>realizar Check-in's</strong>, registrando a <strong>entrada</strong> de um acampante no acampamento!
+
+                    <br><br>
+                    
+                    Para isso, basta escanear o <strong>QR Code</strong> que foi enviado ao acampante ou digitar o código manualmente.
                 </p>
+
+                <div class="container d-grid gap-2">
+                    <button type="button" class="btn button-primary">
+                        <i class="fa-solid fa-camera"></i>
+                        <span>Abrir câmera</span>
+                    </button>
+
+                    <button type="button" class="btn button-secondary">
+                        <i class="fa-solid fa-hashtag"></i>
+                        <span>Digitar o código</span>
+                    </button>
+                </div>
 
             </section>
         </div>
+
     </section>
 
     <nav id="bottomMenu" class="navbar">
         <div class="section-buttons">
-            <a class="item-menu navbar-brand" href="src/pages/scan/scan.html">
+            <a class="actived item-menu navbar-brand" href="src/pages/scan/scan.html">
                 <i class="fa-sharp fa-solid fa-qrcode" color="">
                     <span>Check-in</span>
                 </i>
