@@ -10,7 +10,7 @@
 }
 
 #scannerScreen__dashboard_section {
-    background: #0000004d;
+    background: var(--tertiary-color);
     color: var(--white);
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;

@@ -22,7 +22,7 @@
 .button-secondary {
     width: var(--buttons-widht);
     height: var(--buttons-height);
-    background: #0000004d;
+    background: var(--tertiary-color);
     color: var(--white);
     border-radius: 50px;
     justify-self: center;
@@ -34,9 +34,11 @@
 }
 
 .back-button {
-    display: flex;
+    position: fixed;
+    top: 100px;
+    left: 20px;
     width: 50px;
-    background: #0000004d;
+    background: var(--tertiary-color);
     color: var(--white);
     border-radius: 10px;
 }

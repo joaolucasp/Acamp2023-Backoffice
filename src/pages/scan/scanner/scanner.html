@@ -21,8 +21,10 @@
     <link rel="stylesheet" href="../../../components/bottom-menu/bottom-menu.css" type="text/css">
     <link rel="stylesheet" href="../../../components/header/header.css" type="text/css">
     <link rel="stylesheet" href="../../../utils/color.css" type="text/css">
+    <link rel="stylesheet" href="../../../utils/typography.css" type="text/css">
 
     <!-- Imports Components CSS -->
+    <link rel="stylesheet" href="../../../components/single-result-search/single-result-search.css">
     <link rel="stylesheet" href="../../../components/scanner-qrcode/scanner.css">
     <link rel="stylesheet" href="../../../components/main-image-page/main-image-page.css">
     <link rel="stylesheet" href="../../../components/buttons/buttons.css" type="text/css">
@@ -41,19 +43,86 @@
         <img class="img-fluid" src="../../../../public/deeper-white.png" alt="">
     </header>
 
+    <button type="button" class="btn back-button" onclick="window.location='../scan.html';">
+        <i class="fa-solid fa-arrow-left"></i>
+    </button>
+
     <section id="mainContainer" class="container">
 
         <div class="row">
-            <section id="pageContent">
-                <button type="button" class="btn back-button mb-3" onclick="window.location='../scan.html';">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </button>
-                
+            <section id="pageContent">               
                 <div id="scannerScreen">
                 </div>
 
-                <div id="scanningSuccess">
+                <div id="scanningSuccess" class="d-none">
+                    <h2 class="main-title">Dados do Acampante</h2>
 
+                    <div class="table-responsive">
+                        <table id="table-result-search" class="table table-striped">
+                            <tbody>
+                              <tr>
+                                <th scope="row">
+                                    <span class="field-result-search">
+                                        <i class="fa-solid fa-person"></i>
+                                        Nome
+                                    </span>
+                                </th>
+                                <td class="name-result-search">João Lucas Pereira e Sousa sadasd</td>
+                              </tr>
+    
+                              <tr>
+                                <th scope="row">
+                                    <span class="field-result-search">
+                                        <i class="fa-regular fa-calendar"></i>
+                                        Idade
+                                    </span>
+                                </th>
+                                <td class="age-result-search">20</td>
+                              </tr>
+    
+                              <tr>
+                                <th scope="row">
+                                    <span class="field-result-search">
+                                        <i class="fa-solid fa-mobile"></i>
+                                        Telefone
+                                    </span>
+                                </th>
+                                <td class="telefone-result-search">16981897189</td>
+                              </tr>
+    
+                              <tr>
+                                <th scope="row">
+                                    <span class="field-result-search">
+                                        <i class="fa-solid fa-cross"></i>
+                                        Igreja
+                                    </span>
+                                </th>
+                                <td class="church-result-search">IEQ Boa Vista</td>
+                              </tr>
+    
+                              <tr>
+                                <th scope="row">
+                                    <span class="field-result-search">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        E-mail
+                                    </span>
+                                </th>
+                                <td class="email-result-search">lucaaspereeira@gmail.com</td>
+                              </tr>
+    
+                              <tr>
+                                <th scope="row">
+                                    <span class="field-result-search">
+                                        <i class="fa-solid fa-credit-card"></i>
+                                        Pagamento
+                                    </span>
+                                </th>
+                                <td class="payment-result-search">Confirmado</td>
+                              </tr>
+    
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <div id="scanningFail">
