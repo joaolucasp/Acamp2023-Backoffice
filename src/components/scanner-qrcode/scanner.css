@@ -1,0 +1,37 @@
+#scannerScreen {
+    border-radius: 20px;
+    width: 90% !important;
+    margin: auto;
+}
+
+#qr-shaded-region, video {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+#scannerScreen__dashboard_section {
+    background: #0000004d;
+    color: var(--white);
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#html5-qrcode-select-camera {
+    width: 70%;
+    height: var(--buttons-height);
+    background: var(--white);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#html5-qrcode-button-camera-start, #html5-qrcode-button-camera-stop {
+    width: 70%;
+    height: var(--buttons-height);
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    margin-right: 10px;
+}

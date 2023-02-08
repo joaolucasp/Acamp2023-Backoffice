@@ -13,10 +13,16 @@
     justify-self: center;
 }
 
+.button-primary:hover, .button-primary:focus, .button-primary:active, .button-secondary:hover, .button-secondary:focus, .button-secondary:active, .back-button:hover, .back-button:focus, .back-button:active  {
+    background: var(--white) !important;
+    color: var(--primary-color) !important;
+    font-weight: bold;
+}
+
 .button-secondary {
     width: var(--buttons-widht);
     height: var(--buttons-height);
-    background: var(--primary-color);
+    background: #0000004d;
     color: var(--white);
     border-radius: 50px;
     justify-self: center;
@@ -25,4 +31,16 @@
 .btn span {
     text-transform: uppercase;
     font-weight: semi-bold;
+}
+
+.back-button {
+    display: flex;
+    width: 50px;
+    background: #0000004d;
+    color: var(--white);
+    border-radius: 10px;
+}
+
+.back-button i {
+   font-size: 30px;
 }

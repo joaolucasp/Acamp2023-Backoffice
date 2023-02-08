@@ -11,7 +11,7 @@
   --mainContainer-extra-large: 40%;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -30,10 +30,10 @@ html, body {
 }
 
 /*Main Container and Forms*/
-#mainContainer{
+#mainContainer {
   height: 100%;
   max-width: var(--mainContainer-extra-small);
-  background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 15%, var(--secondary-color) 85%, var(--primary-color));
+  background: var(--secondary-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,6 +45,7 @@ html, body {
   padding-bottom: 80px;
   max-width: var(--mainContainer-extra-small);
 }
+
 /*--------------*/
 
 /*Extre small devices (mode landscape)*/
@@ -56,12 +57,10 @@ html, body {
 
 
 /* Extra small devices (portrait phones, less than 576px)*/
-@media (max-width: 575.98px) { 
-
-}
+@media (max-width: 575.98px) {}
 
 /* Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) and (max-width: 767.98px) { 
+@media (min-width: 576px) and (max-width: 767.98px) {
   #mainContainer {
     width: var(--mainContainer-small);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.500);
@@ -73,7 +72,7 @@ html, body {
 }
 
 /* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) and (max-width: 991.98px) { 
+@media (min-width: 768px) and (max-width: 991.98px) {
   #mainContainer {
     width: var(--mainContainer-medium);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.500);
@@ -85,7 +84,7 @@ html, body {
 }
 
 /* Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) and (max-width: 1199.98px) { 
+@media (min-width: 992px) and (max-width: 1199.98px) {
   #mainContainer {
     width: var(--mainContainer-large);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.500);
@@ -97,7 +96,7 @@ html, body {
 }
 
 /* Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
   #mainContainer {
     width: var(--mainContainer-extra-large);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.500);
