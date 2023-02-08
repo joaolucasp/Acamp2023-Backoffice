@@ -3,7 +3,7 @@ window.onload = function () {
         "scannerScreen",
         {
             "fps": 10,
-            "qrbox": 200,
+            "qrbox": 250,
             "aspectRatio": 1,
         }
     );
