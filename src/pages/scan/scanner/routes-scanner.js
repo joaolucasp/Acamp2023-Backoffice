@@ -62,6 +62,7 @@ const renderScanningFail = function () {
 }
 
 const renderCheckinFail = function () {
-    disableSection('scanningSuccess');
+    const routeActive = localStorage.getItem('route-scan');
+    disableSection(routeActive);
     activeSection('checkinFail');
 }
