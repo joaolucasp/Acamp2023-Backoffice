@@ -22,3 +22,13 @@
 #table-result-search tr:nth-child(even) {
     background-color: #2e619818;
 }
+
+/*Class applied in the payment field*/
+.payment {
+    display: inline-block;
+    background: #0ea130 !important;
+    color: var(--white) !important;
+    border-radius: 10px;
+    margin: 5px;
+    font-weight: bold;
+}
