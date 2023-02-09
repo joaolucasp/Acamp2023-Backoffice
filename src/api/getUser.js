@@ -1,8 +1,8 @@
-const endpoint = `http://localhost:3001/user/`
-const module = `getSingleUser/`
+const urlUser = `http://localhost:3001/user/`
+const endpoint = `getSingleUser/`
 
 const getSingleUser = async (id) => {
-    const urlServer = `${endpoint}${module}${id}`
+    const urlServer = `${urlUser}${endpoint}${id}`
     const response = await fetch(urlServer);
 
     if(!response.ok) return {status: response.status};

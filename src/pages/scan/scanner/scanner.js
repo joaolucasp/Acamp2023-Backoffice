@@ -1,3 +1,5 @@
+let IDUser = 0;
+
 const activeScannerScreen = function () {
     activeSection('scannerScreen');
     html5QrcodeScanner = new Html5QrcodeScanner(
@@ -12,10 +14,18 @@ const activeScannerScreen = function () {
 }
 
 async function onScanSuccess(qrCodeMessage) {
-    processScan(qrCodeMessage);
+    IDUser = qrCodeMessage;
+    await processScan(qrCodeMessage);
     nextStep();
     html5QrcodeScanner.clear();
 }
+
+async function onCodeSuccess(qrCodeMessage) {
+    IDUser = qrCodeMessage;
+    await processScan(qrCodeMessage);
+    nextStep();
+}
+
 function onScanError(errorMessage) {
     //handle scan error
 }
@@ -41,10 +51,12 @@ const processScan = async (qrCodeMessage) => {
 
         case 404:
             console.log('User not found');
+            renderScanningFail();
             break;
 
         case 500:
             console.log('Internal server error');
+            renderCheckinFail();
             break;
 
         default:
@@ -53,14 +65,30 @@ const processScan = async (qrCodeMessage) => {
     }
 }
 
-processScan('JIE1');
-
 const manipulateData = function (data) {
     document.getElementsByClassName('id-result-search')[0].innerText = data.ID;
-    document.getElementsByClassName('name-result-search')[0].innerText = data.Nome;
-    document.getElementsByClassName('age-result-search')[0].innerText = data.DataNascimento;
+    document.getElementsByClassName('name-result-search')[0].innerText = `${data.Nome} ${data.Sobrenome}`;
+    document.getElementsByClassName('age-result-search')[0].innerText = getAge(data.DataNascimento);
     document.getElementsByClassName('telefone-result-search')[0].innerText = `(${data.DDD}) ${data.Telefone}`;
     document.getElementsByClassName('church-result-search')[0].innerText = data.Igreja;
     document.getElementsByClassName('email-result-search')[0].innerText = data.Email;
     document.getElementsByClassName('payment-result-search')[0].innerText = data.Pagamento;
+}
+
+const confirmCheckin = async () => {
+    const response = await registerCheckin(IDUser);
+
+    switch (response.status) {
+        case 201:
+            nextStep();
+            break;
+
+        case 500:
+            renderCheckinFail();
+            break;
+
+        default:
+            console.log('Error');
+            break;
+    }
 }

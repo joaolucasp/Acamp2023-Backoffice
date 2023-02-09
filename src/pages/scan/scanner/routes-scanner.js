@@ -1,5 +1,5 @@
 function firstRoute() {
-    localStorage.getItem('route-scan') == 'code' ? activeSection('codeRoute') : activeScannerScreen();
+    localStorage.getItem('route-scan') == 'codeRoute' ? activeSection('codeRoute') : activeScannerScreen();
 }
 
 firstRoute();
@@ -9,7 +9,7 @@ const nextStep = function () {
 
     for (let section in pageContent.children) {
         if (!pageContent.children[section].classList.contains('d-none')) {
-            
+
             switch (pageContent.children[section].id) {
 
                 case 'scannerScreen':
@@ -41,23 +41,27 @@ const backStep = function () {
 
     for (let section in pageContent.children) {
         if (!pageContent.children[section].classList.contains('d-none')) {
-            switch (pageContent.children[section].id) {
-                case 'scannerScreen' || 'codeRoute':
-                    disableSection(pageContent.children[section].id);
-                    window.location.href = '../scan.html';
-                    break;
+            if (pageContent.children[section].id == 'scannerScreen' || pageContent.children[section].id == 'codeRoute') {
+                disableSection(pageContent.children[section].id);
+                window.location.href = '../scan.html';
 
-                case 'scanningSuccess' || 'scanningFail':
-                    disableSection(pageContent.children[section].id);
-                    firstRoute();
-                    break;
-
-                default:
-                    break;
-
+            } else {
+                disableSection(pageContent.children[section].id);
+                firstRoute();
             }
+
             return;
         }
     }
+}
 
+const renderScanningFail = function () {
+    const routeActive = localStorage.getItem('route-scan');
+    disableSection(routeActive);
+    activeSection('scanningFail');
+}
+
+const renderCheckinFail = function () {
+    disableSection('scanningSuccess');
+    activeSection('checkinFail');
 }
