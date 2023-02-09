@@ -10,9 +10,7 @@
 }
 
 #table-result-search td, th{
-    padding: 10px;
     font-size: 16px;
-    font-weight: bold;
 }
 
 /*Odd rows of table*/

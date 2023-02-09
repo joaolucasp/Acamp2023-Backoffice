@@ -1,7 +1,7 @@
 /* Import Google Font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 /* Import Google Font - Montserrat */
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 :root {
   --mainContainer-extra-small: 575.98px;
@@ -15,7 +15,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: montserrat, arial, verdana;
+  font-family: Poppins, arial, verdana;
 }
 
 html, body {

@@ -1,0 +1,5 @@
+.modal-content {
+    border-radius: 20px;
+    text-transform: uppercase;
+    background: var(--secondary-color);
+}

@@ -6,6 +6,7 @@
 #mainImagePage {
     width: var(--mainImagePage--size);
     background: var(--mainImagePage--bg-color);
+    margin: 20px auto;
     padding: 50px;
     border-radius: 40px;
 }
