@@ -1,4 +1,4 @@
-const urlRegister = `http://localhost:3001/register/`
+const urlRegister = `http://192.168.1.104:3001/register/`
 const module = `checkin/`
 
 const registerCheckin = async (id) => {
