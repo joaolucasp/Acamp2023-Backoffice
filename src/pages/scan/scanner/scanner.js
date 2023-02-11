@@ -1,4 +1,6 @@
 let IDUser = 0;
+let nextScreen;
+const spinner = new Spinner();
 
 const activeScannerScreen = function () {
     activeSection('scannerScreen');
@@ -15,59 +17,50 @@ const activeScannerScreen = function () {
 
 async function onScanSuccess(qrCodeMessage) {
     IDUser = qrCodeMessage;
-    await processScan(qrCodeMessage);
-    nextStep();
     html5QrcodeScanner.clear();
+    await processScan(qrCodeMessage);
 }
 
 async function onCodeSuccess(qrCodeMessage) {
     IDUser = qrCodeMessage;
     await processScan(qrCodeMessage);
-    nextStep();
 }
 
 function onScanError(errorMessage) {
     //handle scan error
 }
 
-const activeSection = function (id) {
-    var section = document.getElementById(id);
-    section.classList.remove('d-none');
-}
-
-const disableSection = function (id) {
-    var section = document.getElementById(id);
-    section.classList.add('d-none');
-}
-
 const processScan = async (qrCodeMessage) => {
-    const spinner = document.getElementById('spinner');
-    spinner.classList.remove('d-none');
+    spinner.on();
+    const routeActive = localStorage.getItem('route-scan');
+    disableSection(routeActive);
 
     const response = await getSingleUser(qrCodeMessage);
-
-    spinner.classList.add('d-none');
-
+    
     switch (response.status) {
         case 200:
             const user = response.data.data[0];
             manipulateData(user);
+            nextScreen = 'tableView';
             break;
 
         case 404:
             console.log('User not found');
-            renderScanningFail();
+            nextScreen = 'scanningFail';
             break;
 
         case 500:
             console.log('Internal server error');
-            renderServerError();
+            nextScreen = 'serverError';
             break;
 
         default:
             console.log('Error');
             break;
     }
+
+    spinner.off();
+    nextStep(nextScreen);
 }
 
 const manipulateData = function (data) {
@@ -81,19 +74,25 @@ const manipulateData = function (data) {
 }
 
 const confirmCheckin = async () => {
+    spinner.on();
+    disableSection('tableView');
     const response = await registerCheckin(IDUser);
 
     switch (response.status) {
         case 201:
-            nextStep();
+            nextScreen = 'checkinSuccess';
             break;
 
         case 500:
-            renderServerError();
+            nextScreen = 'serverError';
+            console.log('Internal server error');
             break;
 
         default:
             console.log('Error');
             break;
     }
+
+    spinner.off();
+    nextStep(nextScreen);
 }

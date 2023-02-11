@@ -41,6 +41,7 @@
     <script src="../../../api/getUser.js"></script>
     <script src="../../../api/registerCheckin.js"></script>
     <script src="../../../utils/tools.js"></script>
+    <script src="../../../components/spinner/spinner.js"></script>
 
     <title>APP Backoffice - Scanner</title>
 </head>
@@ -64,7 +65,6 @@
                     </div>
                 </div>
 
-
                 <div id="scannerScreen" class="d-none">
                 </div>
 
@@ -73,13 +73,13 @@
 
                     <fieldset class="fieldset m-auto w-75">
                         <div class="form-floating">
-                            <input required='' name="key" id="key" class="form-control field"
-                                inputmode="text" minlength="4" placeholder="Identificador (ID)" autocomplete="off">
+                            <input required='' name="key" id="key" class="form-control field" inputmode="text"
+                                minlength="4" placeholder="Identificador (ID)" autocomplete="off">
                             <label for="key">Identificador (ID)</label>
                         </div>
                     </fieldset>
 
-                    <button type="button" class="btn button-primary" 
+                    <button type="button" class="btn button-primary"
                         onclick="onCodeSuccess(document.getElementById('key').value);">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span>Consultar Acampante</span>
@@ -173,7 +173,7 @@
                             <span>Confirmar Check-in</span>
                         </button>
 
-                        <button type="button" class="btn button-secondary">
+                        <button type="button" class="btn button-secondary" onclick="window.location='../scan.html';">
                             <i class="fa-solid fa-times"></i>
                             <span>Cancelar</span>
                         </button>
@@ -191,7 +191,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <div class="d-inline-block w-100">
-                                        <button type="button" class="btn button-primary w-25" data-bs-dismiss="modal"  onclick="confirmCheckin();">
+                                        <button type="button" class="btn button-primary w-25" data-bs-dismiss="modal"
+                                            onclick="confirmCheckin();">
                                             Sim
                                         </button>
 
@@ -273,6 +274,12 @@
     <script src="../../../components/scanner-qrcode/html5-qrcode.min.js"></script>
     <script src="scanner.js"></script>
     <script src="routes-scanner.js"></script>
+
+    <script>
+        window.onload = function () {
+            firstRoute();
+        }
+    </script>
 </body>
 
 </html>

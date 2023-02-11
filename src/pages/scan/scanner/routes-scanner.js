@@ -2,42 +2,37 @@ function firstRoute() {
     localStorage.getItem('route-scan') == 'codeRoute' ? activeSection('codeRoute') : activeScannerScreen();
 }
 
-firstRoute();
-
-const nextStep = function () {
+const nextStep = function (screen) {
     const pageContent = document.getElementById('pageContent');
 
-    for (let section in pageContent.children) {
-        if (!pageContent.children[section].classList.contains('d-none')) {
+    switch (screen) {
+        case 'tableView':
+            activeSection('tableView');
+            break;
 
-            switch (pageContent.children[section].id) {
+        case 'scanningFail':
+            activeSection('scanningFail');
+            break;
 
-                case 'scannerScreen':
-                    disableSection(pageContent.children[section].id);
-                    activeSection('tableView');
-                    break;
+        case 'checkinSuccess':
+            activeSection('checkinSuccess');
+            break;
 
-                case 'codeRoute':
-                    disableSection(pageContent.children[section].id);
-                    activeSection('tableView');
-                    break;
+        case 'notContent':
+            activeSection('notContent');
 
-                case 'tableView':
-                    disableSection(pageContent.children[section].id);
-                    disableSection('backButton');
-                    activeSection('checkinSuccess');
-                    break;
+        case 'serverError':
+            activeSection('serverError');
+            break;
 
-                default:
-                    break;
-            }
-            return;
-        }
+        default:
+            break;
     }
 }
 
 const backStep = function () {
     const pageContent = document.getElementById('pageContent');
+    console.log("oi")
 
     for (let section in pageContent.children) {
         if (!pageContent.children[section].classList.contains('d-none')) {
@@ -46,6 +41,7 @@ const backStep = function () {
                 window.location.href = '../scan.html';
 
             } else {
+                console.log("oi")
                 disableSection(pageContent.children[section].id);
                 firstRoute();
             }
@@ -55,14 +51,12 @@ const backStep = function () {
     }
 }
 
-const renderScanningFail = function () {
-    const routeActive = localStorage.getItem('route-scan');
-    disableSection(routeActive);
-    activeSection('scanningFail');
+const activeSection = function (id) {
+    var section = document.getElementById(id);
+    section.classList.remove('d-none');
 }
 
-const renderServerError = function () {
-    const routeActive = localStorage.getItem('route-scan');
-    disableSection(routeActive);
-    activeSection('serverError');
+const disableSection = function (id) {
+    var section = document.getElementById(id);
+    section.classList.add('d-none');
 }

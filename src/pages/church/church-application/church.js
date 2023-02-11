@@ -1,9 +1,10 @@
 const tableSection = document.getElementById('tableView');
-const spinner = document.getElementById('spinner');
+const spinner = new Spinner();
+let nextScreen;
 
 window.addEventListener('load', async () => {
+    spinner.on();
     await getTableData('checkin=true');
-    spinner.classList.add('d-none');
 });
 
 const getTableData = async (params) => {
@@ -12,24 +13,27 @@ const getTableData = async (params) => {
     switch (response.status) {
         case 200:
             if (response.data.totalItems === 0) {
-                renderNotContent('tableView');
-                return;
+                nextScreen = 'notContent';
+                break; 
             }
 
             const users = response.data.data;
             manipulateAllData(users);
-            tableSection.classList.remove('d-none');
+            nextScreen = 'tableView';
             break;
 
         case 500:
             console.log('Internal server error');
-            renderServerError();
+            nextScreen = 'serverError';
             break;
 
         default:
             console.log('Error');
             break;
     }
+
+    spinner.off()
+    nextStep(nextScreen);
 }
 
 const manipulateAllData = function (data) {

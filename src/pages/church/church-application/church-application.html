@@ -32,6 +32,10 @@
     <!-- Shortcut Icon -->
     <link rel="shortcut icon" href="../../../../public/logo.png" type="image/x-icon">
 
+    <!-- Javascript File's -->
+    <script src="../../../components/spinner/spinner.js"></script>
+    <script src="../../../api/getAllUsers.js"></script>
+
     <title>APP Backoffice - Igrejas </title>
 </head>
 
@@ -43,11 +47,6 @@
     <section id="mainContainer" class="container">
         <div class="row">
             <section id="pageContent">
-                <div id="spinner" class="d-flex justify-content-center text-primary">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
 
                 <div id="tableView" class="d-none">
                     <div class="table-responsive">
@@ -90,7 +89,7 @@
                         <img class="img-fluid" src="../../../assets/images/emoji-sad.png" alt="">
                     </div>
 
-                    <p><strong>Não há check-in's cadastrados.</strong>Faça o primeiro check-in!</p>
+                    <p><strong>Não há check-in's cadastrados.</strong> Faça o primeiro check-in!</p>
 
                     <button type="button" class="btn button-primary" onclick="window.location='../../scan/scan.html';">
                         <i class="fa-solid fa-arrow-left"></i>
@@ -138,10 +137,9 @@
         </div>
     </nav>
 
-    <script src="../../../api/getAllUsers.js"></script>
-    <script src="../../render-route-pages/render-route-pages.js"></script>
     <script src="church.js"></script>
-
+    <script src="../../scan/scanner/routes-scanner.js"></script>
+    
 </body>
 
 </html>
