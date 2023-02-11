@@ -1,5 +1,27 @@
-function firstRoute() {
+function firstRouteCheckin() {
     localStorage.getItem('route-scan') == 'codeRoute' ? activeSection('codeRoute') : activeScannerScreen();
+}
+
+function firstRouteData() {
+    const findCamperRoute = localStorage.getItem('find-camper');
+
+    switch (findCamperRoute) {
+        case 'nameRoute':
+            activeSection('nameRoute');
+            break;
+
+        case 'codeRoute':
+            activeSection('codeRoute');
+            break;
+
+        case 'scannerScreen':
+            activeScannerScreen();
+            break;
+
+        default:
+            break;
+    }
+    
 }
 
 const nextStep = function (screen) {
@@ -22,6 +44,7 @@ const nextStep = function (screen) {
 
         case 'notContent':
             activeSection('notContent');
+            break;
 
         case 'serverError':
             activeSection('serverError');
@@ -42,7 +65,6 @@ const backStep = function () {
                 window.location.href = '../scan.html';
 
             } else {
-                console.log("oi")
                 disableSection(pageContent.children[section].id);
                 firstRoute();
             }

@@ -4,7 +4,7 @@ const endpoint = `getUsers/`
 const getAllUsers = async (params) => {
     try {
         var urlServer = '';
-        params ? urlServer = `${urlUser2}${endpoint}?${params}` : urlServer = `${urlUser2}${endpoint}`
+        params ? urlServer = `${urlUser2}${endpoint}?${params}` : urlServer = `${urlUser2}${endpoint}`;
 
         const response = await fetch(urlServer);
     

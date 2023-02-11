@@ -55,17 +55,23 @@
                 </p>
 
                 <div class="container d-grid gap-2">
-                    <button type="button" class="btn button-primary" onclick="">
+                    <button type="button" class="btn button-primary"
+                        onclick="setRoute('nameRoute');
+                        window.location='camper-application/camper-application.html';">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span>Pesquisar por Nome</span>
                     </button>
     
-                    <button type="button" class="btn button-primary" onclick="">
+                    <button type="button" class="btn button-primary"
+                        onclick="setRoute('codeRoute');
+                        window.location='camper-application/camper-application.html';">
                         <i class="fa-solid fa-hashtag"></i>
                         <span>Pesquisar por código</span>
                     </button>
 
-                    <button type="button" class="btn button-primary" onclick="">
+                    <button type="button" class="btn button-primary"
+                        onclick="setRoute('scannerScreen');
+                        window.location='camper-application/camper-application.html';">
                         <i class="fa-sharp fa-solid fa-qrcode"></i>
                         <span>Scanear QR Code</span>
                     </button>
@@ -97,6 +103,12 @@
             </a>
         </div>
     </nav>
+
+    <script>
+        function setRoute(route) {
+            localStorage.setItem('find-camper', route);
+        }
+    </script>
 
 </body>
 

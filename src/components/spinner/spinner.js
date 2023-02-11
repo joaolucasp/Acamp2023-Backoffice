@@ -8,6 +8,7 @@ class Spinner {
         const divSpinner = document.createElement('div');
         divSpinner.classList.add('spinner-border');
         this.spinner.setAttribute('role', 'status');
+        divSpinner.setAttribute('style', 'color: var(--primary-color)')
 
         const divSpan = document.createElement('span');
         divSpan.classList.add('visually-hidden');

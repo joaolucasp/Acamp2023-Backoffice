@@ -40,7 +40,7 @@ const processScan = async (qrCodeMessage) => {
     switch (response.status) {
         case 200:
             const user = response.data.data[0];
-            manipulateData(user);
+            manipulateSimplifyData(user);
             nextScreen = 'tableView';
             break;
 
@@ -63,7 +63,7 @@ const processScan = async (qrCodeMessage) => {
     nextStep(nextScreen);
 }
 
-const manipulateData = function (data) {
+const manipulateSimplifyData = function (data) {
     document.getElementsByClassName('id-result-search')[0].innerText = data.ID;
     document.getElementsByClassName('name-result-search')[0].innerText = `${data.Nome} ${data.Sobrenome}`;
     document.getElementsByClassName('age-result-search')[0].innerText = getAge(data.DataNascimento);
