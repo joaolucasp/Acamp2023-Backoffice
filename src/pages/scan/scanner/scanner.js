@@ -46,7 +46,7 @@ const processScan = async (qrCodeMessage) => {
 
         case 404:
             console.log('User not found');
-            nextScreen = 'scanningFail';
+            nextScreen = 'notFound';
             break;
 
         case 500:

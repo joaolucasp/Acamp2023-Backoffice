@@ -1,4 +1,4 @@
-#singleResultSearch {
+#simplifyResultSearch, #singleResultSearch {
     text-align: start;
     vertical-align: middle;
     margin: 20px 0;
@@ -9,17 +9,17 @@
     width: 130px !important;
 }
 
-#singleResultSearch td, th{
+#simplifyResultSearch, #singleResultSearch td, th{
     font-size: 16px;
 }
 
 /*Odd rows of table*/
-#singleResultSearch tr:nth-child(odd) {
+#simplifyResultSearch, #singleResultSearch tr:nth-child(odd) {
     background-color: #2e619844;
 }
 
 /*Even table rows*/
-#singleResultSearch tr:nth-child(even) {
+#simplifyResultSearch, #singleResultSearch tr:nth-child(even) {
     background-color: #2e619818;
 }
 

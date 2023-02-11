@@ -1,10 +1,10 @@
-const urlUser = `http://localhost:3001/user/`
+const urlUser2 = `http://localhost:3001/user/`
 const endpoint = `getUsers/`
 
 const getAllUsers = async (params) => {
     try {
         var urlServer = '';
-        params ? urlServer = `${urlUser}${endpoint}?${params}` : urlServer = `${urlUser}${endpoint}`
+        params ? urlServer = `${urlUser2}${endpoint}?${params}` : urlServer = `${urlUser2}${endpoint}`
 
         const response = await fetch(urlServer);
     

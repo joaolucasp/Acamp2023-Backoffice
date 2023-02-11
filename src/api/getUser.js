@@ -1,9 +1,9 @@
-const urlUser = `http://localhost:3001/user/`
-const endpoint = `getSingleUser/`
+const urlUser1 = `http://localhost:3001/user/`
+const endpointSingleUser = `getSingleUser/`
 
 const getSingleUser = async (id) => {
     try {
-        const urlServer = `${urlUser}${endpoint}${id}`
+        const urlServer = `${urlUser1}${endpointSingleUser}${id}`
         const response = await fetch(urlServer);
     
         if(!response.ok) return {status: response.status};

@@ -3,15 +3,17 @@ function firstRoute() {
 }
 
 const nextStep = function (screen) {
-    const pageContent = document.getElementById('pageContent');
-
     switch (screen) {
         case 'tableView':
             activeSection('tableView');
             break;
 
-        case 'scanningFail':
-            activeSection('scanningFail');
+        case 'camperView':
+            activeSection('camperView');
+            break;
+
+        case 'notFound':
+            activeSection('notFound');
             break;
 
         case 'checkinSuccess':
@@ -32,7 +34,6 @@ const nextStep = function (screen) {
 
 const backStep = function () {
     const pageContent = document.getElementById('pageContent');
-    console.log("oi")
 
     for (let section in pageContent.children) {
         if (!pageContent.children[section].classList.contains('d-none')) {

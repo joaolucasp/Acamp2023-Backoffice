@@ -17,14 +17,16 @@
 
 
     <!-- Imports Style CSS -->
-    <link rel="stylesheet" href="../../stylesheet/default-content.css" type="text/css">
+    <link rel="stylesheet" href="../../stylesheet/extend-content.css" type="text/css">
     <link rel="stylesheet" href="../../../components/bottom-menu/bottom-menu.css" type="text/css">
     <link rel="stylesheet" href="../../../components/header/header.css" type="text/css">
     <link rel="stylesheet" href="../../../utils/color.css" type="text/css">
+    <link rel="stylesheet" href="../../../utils/typography.css" type="text/css">
 
     <link rel="stylesheet" href="../../../components/main-image-page/main-image-page.css">
     <link rel="stylesheet" href="../../../components/buttons/buttons.css" type="text/css">
     <link rel="stylesheet" href="../../../components/multiple-result-search/multiple-result-search.css" type="text/css">
+    <link rel="stylesheet" href="../../../components/single-result-search/single-result-search.css" type="text/css">
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/eac825cd8d.js" crossorigin="anonymous"></script>
@@ -35,6 +37,8 @@
     <!-- Javascript File's -->
     <script src="../../../components/spinner/spinner.js"></script>
     <script src="../../../api/getAllUsers.js"></script>
+    <script src="../../../api/getUser.js"></script>
+    <script src="../../../utils/tools.js"></script>
 
     <title>APP Backoffice - Igrejas </title>
 </head>
@@ -49,31 +53,169 @@
             <section id="pageContent">
 
                 <div id="tableView" class="d-none">
+                    <h2 class="main-title">Todos Check-in's</h2>
+
                     <div class="table-responsive">
                         <table id="multipleResultSearch" class="table table-striped">
                             <tbody>
                                 <thead>
                                     <tr>
                                         <th scope="col">
-                                            <span class="field-result-search">
+                                            <span>
                                                 <i class="fa-solid fa-hashtag"></i>
                                                 ID
                                             </span>
                                         </th>
                                         <th scope="col">
-                                            <span class="field-result-search">
+                                            <span>
                                                 <i class="fa-solid fa-person"></i>
                                                 Nome
                                             </span>
                                         </th>
                                         <th scope="col">
-                                            <span class="field-result-search">
+                                            <span>
                                                 <i class="fa-solid fa-cross"></i>
                                                 Igreja
                                             </span>
                                         </th>
                                     </tr>
                                 </thead>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <button type="button" class="btn button-primary" onclick="window.location='../church.html';">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </button>
+                </div>
+
+                <div id="camperView" class="d-none">
+                    <h2 class="main-title">Informações do acampante</h2>
+
+                    <div class="table-responsive">
+                        <table id="singleResultSearch" class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-hashtag"></i>
+                                            ID
+                                        </span>
+                                    </th>
+                                    <td class="id-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-person"></i>
+                                            Nome
+                                        </span>
+                                    </th>
+                                    <td class="name-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-signature"></i>
+                                            Apelido
+                                        </span>
+                                    </th>
+                                    <td class="surname-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-regular fa-calendar"></i>
+                                            Idade
+                                        </span>
+                                    </th>
+                                    <td class="age-result-search"></td>
+                                </tr>
+
+                                <tr id="rowAdultResponsible">
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-regular fa-user"></i>
+                                            Adulto Responsável
+                                        </span>
+                                    </th>
+                                    <td class="adult-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-mobile"></i>
+                                            Telefone
+                                        </span>
+                                    </th>
+                                    <td class="telefone-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-cross"></i>
+                                            Igreja
+                                        </span>
+                                    </th>
+                                    <td class="church-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-envelope"></i>
+                                            E-mail
+                                        </span>
+                                    </th>
+                                    <td class="email-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-credit-card"></i>
+                                            Pagamento
+                                        </span>
+                                    </th>
+                                    <td class="payment-result-search payment"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-check"></i>
+                                            Check-in
+                                        </span>
+                                    </th>
+                                    <td class="checkin-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-syringe"></i>
+                                            Alergias
+                                        </span>
+                                    </th>
+                                    <td class="allergy-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-syringe"></i>
+                                            Remédios
+                                        </span>
+                                    </th>
+                                    <td class="medicines-result-search"></td>
+                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -94,6 +236,19 @@
                     <button type="button" class="btn button-primary" onclick="window.location='../../scan/scan.html';">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span>Fazer check-in</span>
+                    </button>
+                </div>
+
+                <div id="notFound" class="d-none">
+                    <div id="mainImagePage" class="container">
+                        <img class="img-fluid" src="../../../assets/images/emoji-sad.png" alt="">
+                    </div>
+
+                    <p><strong>Acampante não encontrado!</strong> Verifique os dados e tente novamente.</p>
+
+                    <button type="button" class="btn button-primary" onclick="window.location='../scan.html';">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Voltar</span>
                     </button>
                 </div>
 
