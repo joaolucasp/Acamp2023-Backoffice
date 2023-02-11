@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--  -->
+    <meta property="og:title" content="App Backoffice Acampamento 2023" />
+    <meta property="og:description"
+        content="App Backoffice Acampamento 2023 - Igreja do Evangelho Quadrangular Região 513" />
+
+    <!-- Bootstrap CSS & JS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Imports Style CSS -->
+    <link rel="stylesheet" href="../../stylesheet/default-content.css" type="text/css">
+    <link rel="stylesheet" href="../../../components/bottom-menu/bottom-menu.css" type="text/css">
+    <link rel="stylesheet" href="../../../components/header/header.css" type="text/css">
+    <link rel="stylesheet" href="../../../utils/color.css" type="text/css">
+
+    <link rel="stylesheet" href="../../../components/main-image-page/main-image-page.css">
+    <link rel="stylesheet" href="../../../components/buttons/buttons.css" type="text/css">
+    <link rel="stylesheet" href="../../../components/multiple-result-search/multiple-result-search.css" type="text/css">
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/eac825cd8d.js" crossorigin="anonymous"></script>
+
+    <!-- Shortcut Icon -->
+    <link rel="shortcut icon" href="../../../../public/logo.png" type="image/x-icon">
+
+    <title>APP Backoffice - Igrejas </title>
+</head>
+
+<body>
+    <header id="header">
+        <img class="img-fluid" src="../../../../public/deeper-white.png" alt="">
+    </header>
+
+    <section id="mainContainer" class="container">
+        <div class="row">
+            <section id="pageContent">
+                <div id="spinner" class="d-flex justify-content-center text-primary">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
+                <div id="tableView" class="d-none">
+                    <div class="table-responsive">
+                        <table id="multipleResultSearch" class="table table-striped">
+                            <tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <span class="field-result-search">
+                                                <i class="fa-solid fa-hashtag"></i>
+                                                ID
+                                            </span>
+                                        </th>
+                                        <th scope="col">
+                                            <span class="field-result-search">
+                                                <i class="fa-solid fa-person"></i>
+                                                Nome
+                                            </span>
+                                        </th>
+                                        <th scope="col">
+                                            <span class="field-result-search">
+                                                <i class="fa-solid fa-cross"></i>
+                                                Igreja
+                                            </span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <button type="button" class="btn button-primary" onclick="window.location='../church.html';">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </button>
+                </div>
+
+                <div id="notContent" class="d-none">
+                    <div id="mainImagePage" class="container">
+                        <img class="img-fluid" src="../../../assets/images/emoji-sad.png" alt="">
+                    </div>
+
+                    <p><strong>Não há check-in's cadastrados.</strong>Faça o primeiro check-in!</p>
+
+                    <button type="button" class="btn button-primary" onclick="window.location='../../scan/scan.html';">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Fazer check-in</span>
+                    </button>
+                </div>
+
+                <div id="serverError" class="d-none">
+                    <div id="mainImagePage" class="container">
+                        <img class="img-fluid" src="../../../assets/images/server-error.png" alt="">
+                    </div>
+
+                    <p><strong>Erro no servidor!</strong> Contate o João Lucas.</p>
+
+                    <button type="button" class="btn button-primary" onclick="window.location='../church.html';">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </button>
+                </div>
+
+            </section>
+        </div>
+
+    </section>
+
+    <nav id="bottomMenu" class="navbar">
+        <div class="section-buttons">
+            <a class="item-menu navbar-brand" href="../../scan/scan.html">
+                <i class="fa-sharp fa-solid fa-qrcode" color="">
+                    <span>Check-in</span>
+                </i>
+            </a>
+
+            <a class="item-menu navbar-brand" href="../../camper/camper.html">
+                <i class="fa-solid fa-circle-user">
+                    <span>Dados</span>
+                </i>
+            </a>
+
+            <a class="actived item-menu navbar-brand" href="../church.html">
+                <i class="fa-solid fa-church">
+                    <span>Igreja</span>
+                </i>
+            </a>
+        </div>
+    </nav>
+
+    <script src="../../../api/getAllUsers.js"></script>
+    <script src="../../render-route-pages/render-route-pages.js"></script>
+    <script src="church.js"></script>
+
+</body>
+
+</html>

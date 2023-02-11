@@ -14,15 +14,15 @@ const nextStep = function () {
 
                 case 'scannerScreen':
                     disableSection(pageContent.children[section].id);
-                    activeSection('scanningSuccess');
+                    activeSection('tableView');
                     break;
 
                 case 'codeRoute':
                     disableSection(pageContent.children[section].id);
-                    activeSection('scanningSuccess');
+                    activeSection('tableView');
                     break;
 
-                case 'scanningSuccess':
+                case 'tableView':
                     disableSection(pageContent.children[section].id);
                     disableSection('backButton');
                     activeSection('checkinSuccess');
@@ -61,8 +61,8 @@ const renderScanningFail = function () {
     activeSection('scanningFail');
 }
 
-const renderCheckinFail = function () {
+const renderServerError = function () {
     const routeActive = localStorage.getItem('route-scan');
     disableSection(routeActive);
-    activeSection('checkinFail');
+    activeSection('serverError');
 }

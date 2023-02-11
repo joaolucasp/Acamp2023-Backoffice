@@ -1,0 +1,26 @@
+#multipleResultSearch {
+    vertical-align: middle;
+    text-align: start;
+    margin: 20px 0;
+}
+
+/*Header*/
+#multipleResultSearch th {
+    background-color: #2e6198;
+    color: white;
+}
+
+/*Odd rows of table*/
+#multipleResultSearch tr:nth-child(odd) {
+    background-color: #2e619844;
+}
+
+/*Even table rows*/
+#multipleResultSearch tr:nth-child(even) {
+    background-color: #2e619818;
+}
+
+.row-table {
+    padding-left: 10px;
+    height: 40px;
+}

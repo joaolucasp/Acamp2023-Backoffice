@@ -41,7 +41,12 @@ const disableSection = function (id) {
 }
 
 const processScan = async (qrCodeMessage) => {
+    const spinner = document.getElementById('spinner');
+    spinner.classList.remove('d-none');
+
     const response = await getSingleUser(qrCodeMessage);
+
+    spinner.classList.add('d-none');
 
     switch (response.status) {
         case 200:
@@ -56,7 +61,7 @@ const processScan = async (qrCodeMessage) => {
 
         case 500:
             console.log('Internal server error');
-            renderCheckinFail();
+            renderServerError();
             break;
 
         default:
@@ -84,7 +89,7 @@ const confirmCheckin = async () => {
             break;
 
         case 500:
-            renderCheckinFail();
+            renderServerError();
             break;
 
         default:
