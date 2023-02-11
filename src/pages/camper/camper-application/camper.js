@@ -51,6 +51,7 @@ const processFind = async (query) => {
                     const users = response.data.data;
                     manipulateAllData(users);
                     nextScreen = 'tableView';
+                    setCssExtendContent();
                 }
             } else {
                 const user = response.data.data[0];
