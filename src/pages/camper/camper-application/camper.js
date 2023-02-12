@@ -80,6 +80,31 @@ const processFind = async (query) => {
     nextStep(nextScreen);
 }
 
+const confirmCheckin = async () => {
+    spinner.on();
+    disableSection('camperView');
+    const response = await registerCheckin(IDUser);
+
+    switch (response.status) {
+        case 201:
+            nextScreen = 'checkinSuccess';
+            setCssExtendContent();
+            break;
+
+        case 500:
+            nextScreen = 'serverError';
+            console.log('Internal server error');
+            break;
+
+        default:
+            console.log('Error');
+            break;
+    }
+
+    spinner.off();
+    nextStep(nextScreen);
+}
+
 const camperView = async (id) => {
     let idSimplify = id.split('-')[1];
     spinner.on();
@@ -126,7 +151,16 @@ const manipulateSingleData = function (data) {
     camperViewTable.getElementsByClassName('church-result-search')[0].innerText = data.Igreja;
     camperViewTable.getElementsByClassName('email-result-search')[0].innerText = data.Email;
     camperViewTable.getElementsByClassName('payment-result-search')[0].innerText = data.Pagamento;
-    camperViewTable.getElementsByClassName('checkin-result-search')[0].innerText = data.Checkin;
+
+    // Checkin fluxes
+    if(data.Checkin){
+        camperViewTable.getElementsByClassName('checkin-result-search')[0].innerText = data.Checkin;
+        document.getElementById('checkinButton').classList.add('d-none');
+
+    } else{
+        document.getElementById('rowCheckin').classList.add('d-none');
+    }
+
     camperViewTable.getElementsByClassName('allergy-result-search')[0].innerText = data.Alergias;
     camperViewTable.getElementsByClassName('medicines-result-search')[0].innerText = data.Remedios;
 }
