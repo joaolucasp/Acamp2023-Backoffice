@@ -27,10 +27,6 @@ async function onCodeSuccess(displayMethod, qrCodeMessage) {
     await processFind(displayMethod, qrCodeMessage);
 }
 
-async function findName(displayMethod, name) {
-    await processFind(displayMethod, name);
-}
-
 function onScanError(errorMessage) {
     //handle scan error
 }
@@ -40,12 +36,27 @@ const processFind = async (displayMethod, query) => {
     const routeActive = getRouteActive();
     disableSection(routeActive);
 
-    let response;
-    routeActive === 'nameRoute' ? response = await getAllUsers(`name=${query}`) : response = await getSingleUser(query);
+    switch (routeActive) {
+        case 'nameRoute':
+            response = await getAllUsers(`name=${query}`)
+            break;
+
+        case 'churchRoute':
+            response = await getUsersByChurch(query)
+            break;
+
+        case 'tableView':
+            response = await getAllUsers(query);
+            break;
+
+        default:
+            response = await getSingleUser(query);
+            break;
+    }
 
     switch (response.status) {
         case 200:
-            if (routeActive === 'nameRoute') {
+            if (routeActive === 'nameRoute' || routeActive === 'churchRoute' || routeActive === 'tableView') {
                 if (response.data.totalItems === 0) {
                     nextScreen = 'notContent';
                 } else {
@@ -143,43 +154,11 @@ const camperView = async (id) => {
 
 const renderTable = async () => {
     spinner.on();
-    await getTableData('user', 'checkin=true');
+    await processFind('complete', 'checkin=true');
 }
 
 const findCamperByChurch = async (church) => {
     disableSection('churchRoute');
     spinner.on();
-    await getTableData('church', `ALL?church=${church}`);
-}
-
-const getTableData = async (module, params) => {
-    let response;
-    module == 'church' ? response = await getUsersByChurch(params) : response = await getAllUsers(params);;
-
-    switch (response.status) {
-        case 200:
-            if (response.data.totalItems === 0) {
-                nextScreen = 'notContent';
-                
-            } else{
-                const users = response.data.data;
-                manipulateAllData(users);
-                nextScreen = 'tableView';
-                setCssExtendContent();
-            }
-           
-            break;
-
-        case 500:
-            console.log('Internal server error');
-            nextScreen = 'serverError';
-            break;
-
-        default:
-            console.log('Error');
-            break;
-    }
-
-    spinner.off()
-    nextStep(nextScreen);
+    await processFind('complete', `ALL?church=${church}`);
 }
