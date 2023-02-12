@@ -1,4 +1,4 @@
-const urlUser2 = `http://192.168.1.104:3001/user/`
+const urlUser2 = `http://localhost:3001/user/`
 const endpoint = `getUsers/`
 
 const getAllUsers = async (params) => {

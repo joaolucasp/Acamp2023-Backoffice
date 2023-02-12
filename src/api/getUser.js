@@ -1,4 +1,4 @@
-const urlUser1 = `http://192.168.1.104:3001/user/`
+const urlUser1 = `http://localhost:3001/user/`
 const endpointSingleUser = `getSingleUser/`
 
 const getSingleUser = async (id) => {
