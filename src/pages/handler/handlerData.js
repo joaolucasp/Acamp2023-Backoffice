@@ -1,22 +1,8 @@
-const manipulateSimplifyData = function (data) {
-    let tableView = document.getElementById('tableView');
+let camperViewTable = document.getElementById('camperView');
 
-    document.getElementsByClassName('id-result-search')[0].innerText = data.ID;
-    document.getElementsByClassName('name-result-search')[0].innerText = `${data.Nome} ${data.Sobrenome}`;
-    document.getElementsByClassName('age-result-search')[0].innerText = getAge(data.DataNascimento);
-    getAge(data.DataNascimento) < 18 ? tableView.getElementsByClassName('adult-result-search')[0].innerText = data.NomeResponsavel : document.getElementById('rowAdultResponsible').classList.add('d-none');
-    document.getElementsByClassName('telefone-result-search')[0].innerText = `(${data.DDD}) ${data.Telefone}`;
-    document.getElementsByClassName('church-result-search')[0].innerText = data.Igreja;
-    document.getElementsByClassName('email-result-search')[0].innerText = data.Email;
-    document.getElementsByClassName('payment-result-search')[0].innerText = data.Pagamento;
-}
-
-const manipulateSingleData = function (data) {
-    let camperViewTable = document.getElementById('camperView');
-
+const manipulateSingleData = function (displayMethod, data) {
     camperViewTable.getElementsByClassName('id-result-search')[0].innerText = data.ID;
     camperViewTable.getElementsByClassName('name-result-search')[0].innerText = `${data.Nome} ${data.Sobrenome}`;
-    camperViewTable.getElementsByClassName('surname-result-search')[0].innerText = data.Apelido;
     camperViewTable.getElementsByClassName('age-result-search')[0].innerText = getAge(data.DataNascimento);
     getAge(data.DataNascimento) < 18 ? camperViewTable.getElementsByClassName('adult-result-search')[0].innerText = data.NomeResponsavel : document.getElementById('rowAdultResponsible').classList.add('d-none');
     camperViewTable.getElementsByClassName('telefone-result-search')[0].innerText = `(${data.DDD}) ${data.Telefone}`;
@@ -24,17 +10,20 @@ const manipulateSingleData = function (data) {
     camperViewTable.getElementsByClassName('email-result-search')[0].innerText = data.Email;
     camperViewTable.getElementsByClassName('payment-result-search')[0].innerText = data.Pagamento;
 
-    // Checkin fluxes
-    if(data.Checkin){
-        camperViewTable.getElementsByClassName('checkin-result-search')[0].innerText = data.Checkin;
-        document.getElementById('checkinButton').classList.add('d-none');
+    if (displayMethod === 'complete') {
+        camperViewTable.getElementsByClassName('surname-result-search')[0].innerText = data.Apelido;
+        camperViewTable.getElementsByClassName('allergy-result-search')[0].innerText = data.Alergias;
+        camperViewTable.getElementsByClassName('medicines-result-search')[0].innerText = data.Remedios;
 
-    } else{
-        document.getElementById('rowCheckin').classList.add('d-none');
+        // Checkin fluxes
+        if (data.Checkin) {
+            camperViewTable.getElementsByClassName('checkin-result-search')[0].innerText = data.Checkin;
+            document.getElementById('checkinButton').classList.add('d-none');
+
+        } else {
+            document.getElementById('rowCheckin').classList.add('d-none');
+        }
     }
-
-    camperViewTable.getElementsByClassName('allergy-result-search')[0].innerText = data.Alergias;
-    camperViewTable.getElementsByClassName('medicines-result-search')[0].innerText = data.Remedios;
 }
 
 const manipulateAllData = function (data) {

@@ -35,12 +35,11 @@
     <script src="https://kit.fontawesome.com/eac825cd8d.js" crossorigin="anonymous"></script>
 
     <!-- Javascript File's -->
+    <script src="../../../components/spinner/spinner.js"></script>
     <script src="../../../api/getAllUsers.js"></script>
     <script src="../../../api/getUser.js"></script>
     <script src="../../../api/registerCheckin.js"></script>
     <script src="../../../utils/tools.js"></script>
-    <script src="../../../components/spinner/spinner.js"></script>
-    <script src="../../handler/handlerData.js"></script>
 
     <!-- Shortcut Icon -->
     <link rel="shortcut icon" href="../../../../public/logo.png" type="image/x-icon">
@@ -68,7 +67,7 @@
                     </fieldset>
 
                     <button type="button" class="btn button-primary"
-                        onclick="findName(document.getElementById('name').value);">
+                        onclick="findName('complete', document.getElementById('name').value);">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span>Consultar Acampante</span>
                     </button>
@@ -86,7 +85,7 @@
                     </fieldset>
 
                     <button type="button" class="btn button-primary"
-                        onclick="onCodeSuccess(document.getElementById('key').value);">
+                        onclick="onCodeSuccess('complete', document.getElementById('key').value);">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span>Consultar Acampante</span>
                     </button>
@@ -357,7 +356,8 @@
 
     <script src="../../../components/scanner-qrcode/html5-qrcode.min.js"></script>
     <script src="../../render-route-pages/routes.js"></script>
-    <script src="camper.js"></script>
+    <script src="../../handler/handlerData.js"></script>
+    <script src="../../handler/processData.js"></script>
 
     <script>
         window.onload = function () {

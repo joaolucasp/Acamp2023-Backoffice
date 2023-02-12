@@ -38,11 +38,10 @@
     <link rel="shortcut icon" href="../../../../public/logo.png" type="image/x-icon">
 
     <!-- Javascript File's -->
-    <script src="../../handler/handlerData.js"></script>
+    <script src="../../../components/spinner/spinner.js"></script>
     <script src="../../../api/getUser.js"></script>
     <script src="../../../api/registerCheckin.js"></script>
     <script src="../../../utils/tools.js"></script>
-    <script src="../../../components/spinner/spinner.js"></script>
 
     <title>APP Backoffice - Scanner</title>
 </head>
@@ -75,13 +74,13 @@
                     </fieldset>
 
                     <button type="button" class="btn button-primary"
-                        onclick="onCodeSuccess(document.getElementById('key').value);">
+                        onclick="onCodeSuccess('simplify', document.getElementById('key').value);">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span>Consultar Acampante</span>
                     </button>
                 </div>
 
-                <div id="tableView" class="d-none">
+                <div id="camperView" class="d-none">
                     <h2 class="main-title">Dados do Acampante</h2>
 
                     <div class="table-responsive">
@@ -277,8 +276,9 @@
     </nav>
 
     <script src="../../../components/scanner-qrcode/html5-qrcode.min.js"></script>
-    <script src="scanner.js"></script>
     <script src="../../render-route-pages/routes.js"></script>
+    <script src="../../handler/handlerData.js"></script>
+    <script src="../../handler/processData.js"></script>
 
     <script>
         window.onload = function () {

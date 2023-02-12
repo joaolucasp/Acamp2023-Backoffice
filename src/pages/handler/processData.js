@@ -1,6 +1,7 @@
 let IDUser = 0;
 let nextScreen;
 const spinner = new Spinner();
+const tableSection = document.getElementById('tableView');
 
 const activeScannerScreen = function () {
     activeSection('scannerScreen');
@@ -18,23 +19,23 @@ const activeScannerScreen = function () {
 async function onScanSuccess(qrCodeMessage) {
     IDUser = qrCodeMessage;
     html5QrcodeScanner.clear();
-    await processFind(qrCodeMessage);
+    await processFind('simplify', qrCodeMessage);
 }
 
-async function onCodeSuccess(qrCodeMessage) {
+async function onCodeSuccess(displayMethod, qrCodeMessage) {
     IDUser = qrCodeMessage;
-    await processFind(qrCodeMessage);
+    await processFind(displayMethod, qrCodeMessage);
 }
 
-async function findName(name) {
-    await processFind(name);
+async function findName(displayMethod, name) {
+    await processFind(displayMethod, name);
 }
 
 function onScanError(errorMessage) {
     //handle scan error
 }
 
-const processFind = async (query) => {
+const processFind = async (displayMethod, query) => {
     spinner.on();
     const routeActive = getRouteActive();
     disableSection(routeActive);
@@ -55,9 +56,9 @@ const processFind = async (query) => {
                 }
             } else {
                 const user = response.data.data[0];
-                manipulateSingleData(user);
+                manipulateSingleData(displayMethod, user);
                 nextScreen = 'camperView';
-                setCssExtendContent();
+                displayMethod == 'complete' ? setCssExtendContent() : setCssDefaultContent();
             }
             break;
 
@@ -88,7 +89,7 @@ const confirmCheckin = async () => {
     switch (response.status) {
         case 201:
             nextScreen = 'checkinSuccess';
-            setCssExtendContent();
+            setCssDefaultContent();
             break;
 
         case 500:
@@ -115,7 +116,7 @@ const camperView = async (id) => {
         case 200:
             const user = response.data.data[0];
             IDUser = user.ID;
-            manipulateSingleData(user);
+            manipulateSingleData('complete', user);
             nextScreen = 'camperView';
             setCssExtendContent();
             break;
@@ -137,5 +138,48 @@ const camperView = async (id) => {
     }
 
     spinner.off();
+    nextStep(nextScreen);
+}
+
+const renderTable = async () => {
+    spinner.on();
+    await getTableData('user', 'checkin=true');
+}
+
+const findCamperByChurch = async (church) => {
+    disableSection('churchRoute');
+    spinner.on();
+    await getTableData('church', `ALL?church=${church}`);
+}
+
+const getTableData = async (module, params) => {
+    let response;
+    module == 'church' ? response = await getUsersByChurch(params) : response = await getAllUsers(params);;
+
+    switch (response.status) {
+        case 200:
+            if (response.data.totalItems === 0) {
+                nextScreen = 'notContent';
+                
+            } else{
+                const users = response.data.data;
+                manipulateAllData(users);
+                nextScreen = 'tableView';
+                setCssExtendContent();
+            }
+           
+            break;
+
+        case 500:
+            console.log('Internal server error');
+            nextScreen = 'serverError';
+            break;
+
+        default:
+            console.log('Error');
+            break;
+    }
+
+    spinner.off()
     nextStep(nextScreen);
 }

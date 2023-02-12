@@ -16,3 +16,9 @@ const setCssExtendContent = function () {
 
     css.setAttribute('href', '../../stylesheet/extend-content.css');
 }
+
+const setCssDefaultContent = function () {
+    const css = document.getElementById('cssContent');
+
+    css.setAttribute('href', '../../stylesheet/default-content.css');
+}
