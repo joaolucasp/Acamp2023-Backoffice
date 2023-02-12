@@ -1,9 +1,11 @@
-const urlUserModule2 = `http://localhost:3001/user/`
-const endpointSingleUser = `getSingleUser/`
+const urlPaymentModule = `http://localhost:3001/payment/`
+const endpointPayment = `getPayments/`
 
-const getSingleUser = async (id) => {
+const getUsersByChurch = async (params) => {
     try {
-        const urlServer = `${urlUserModule2}${endpointSingleUser}${id}`
+        var urlServer = '';
+        params ? urlServer = `${urlPaymentModule}${endpointPayment}${params}` : urlServer = `${urlPaymentModule}${endpointPayment}`;
+
         const response = await fetch(urlServer);
     
         if(!response.ok) return {status: response.status};

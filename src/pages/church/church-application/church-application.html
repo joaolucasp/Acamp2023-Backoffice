@@ -20,11 +20,12 @@
     <link id="cssContent" rel="stylesheet" href="../../stylesheet/default-content.css" type="text/css">
     <link rel="stylesheet" href="../../../components/bottom-menu/bottom-menu.css" type="text/css">
     <link rel="stylesheet" href="../../../components/header/header.css" type="text/css">
+    <link rel="stylesheet" href="../../../components/buttons/buttons.css" type="text/css">
+    <link rel="stylesheet" href="../../../components/field/field.css" type="text/css">
     <link rel="stylesheet" href="../../../utils/color.css" type="text/css">
     <link rel="stylesheet" href="../../../utils/typography.css" type="text/css">
 
     <link rel="stylesheet" href="../../../components/main-image-page/main-image-page.css">
-    <link rel="stylesheet" href="../../../components/buttons/buttons.css" type="text/css">
     <link rel="stylesheet" href="../../../components/multiple-result-search/multiple-result-search.css" type="text/css">
     <link rel="stylesheet" href="../../../components/single-result-search/single-result-search.css" type="text/css">
 
@@ -38,6 +39,7 @@
     <script src="../../../components/spinner/spinner.js"></script>
     <script src="../../../api/getAllUsers.js"></script>
     <script src="../../../api/getUser.js"></script>
+    <script src="../../../api/getChurchCampers.js"></script>
     <script src="../../../utils/tools.js"></script>
 
     <title>APP Backoffice - Igrejas </title>
@@ -57,22 +59,40 @@
 
                     <fieldset class="fieldset m-auto w-75">
                         <div class="form-floating">
-                            <input required='' name="key" id="key" class="form-control field" inputmode="text"
-                                minlength="4" placeholder="Identificador (ID)" autocomplete="off">
-                            <label for="key">Identificador (ID)</label>
+                            <select required="" inputmode="select" class="form-control field"
+                                name="church" id="church">
+                                <option value="" selected disabled="">Opções para escolha</option>
+                                <option value="ieq-aguavermelha">IEQ - Água Vermelha</option>
+                                <option value="ieq-azulville">IEQ - Azulville</option>
+                                <option value="ieq-boavista">IEQ - Boa Vista</option>
+                                <option value="ieq-botafogo">IEQ - Botafogo</option>
+                                <option value="ieq-cruzeiro">IEQ - Cruzeiro do Sul</option>
+                                <option value="ieq-descalvado">IEQ - Descalvado</option>
+                                <option value="ieq-ibate">IEQ - Ibaté</option>
+                                <option value="ieq-itirapina">IEQ - Itirapina</option>
+                                <option value="ieq-tangara">IEQ - Jardim Tangará</option>
+                                <option value="ieq-jockeyclub">IEQ - Jockey Club</option>
+                                <option value="ieq-planaltoparaiso">IEQ - Planalto Paraiso</option>
+                                <option value="ieq-ribeiraobonito">IEQ - Ribeirão Bonito</option>
+                                <option value="ieq-santafelicia">IEQ - Santa Felícia</option>
+                                <option value="ieq-vilabrasilia">IEQ - Vila Brasília</option>
+                                <option value="outra-igreja">Outra</option>
+                            </select>
+
+                            <label for="church">Igreja</label>
                         </div>
                     </fieldset>
 
                     <button type="button" class="btn button-primary"
-                        onclick="onCodeSuccess(document.getElementById('key').value);">
+                        onclick="findCamperByChurch(document.getElementById('church').value)">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <span>Consultar Acampante</span>
+                        <span>Consultar Acampantes</span>
                     </button>
 
                 </div>
 
                 <div id="tableView" class="d-none">
-                    <h2 class="main-title">Todos Check-in's</h2>
+                    <h2 class="main-title">Resultado da busca</h2>
 
                     <div class="table-responsive">
                         <table id="multipleResultSearch" class="table table-striped">
@@ -250,11 +270,11 @@
                         <img class="img-fluid" src="../../../assets/images/emoji-sad.png" alt="">
                     </div>
 
-                    <p><strong>Não há check-in's cadastrados.</strong> Faça o primeiro check-in!</p>
+                    <p><strong>Não há resultados a serem exibidos.</strong> Tente outro filtro!</p>
 
-                    <button type="button" class="btn button-primary" onclick="window.location='../../scan/scan.html';">
+                    <button type="button" class="btn button-primary" onclick="window.location='../church.html';">
                         <i class="fa-solid fa-arrow-left"></i>
-                        <span>Fazer check-in</span>
+                        <span>Voltar</span>
                     </button>
                 </div>
 
@@ -319,7 +339,7 @@
             firstRoute();
         }
     </script>
-    
+
 </body>
 
 </html>

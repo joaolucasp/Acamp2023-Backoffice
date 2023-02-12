@@ -4,23 +4,31 @@ let nextScreen;
 
 const renderTable = async () => {
     spinner.on();
-    await getTableData('checkin=true');
-    activeSection('tableView');
+    await getTableData('user', 'checkin=true');
 }
 
-const getTableData = async (params) => {
-    const response = await getAllUsers(params);
+const findCamperByChurch = async (church) => {
+    disableSection('churchRoute');
+    spinner.on();
+    await getTableData('church', `ALL?church=${church}`);
+}
+
+const getTableData = async (module, params) => {
+    let response;
+    module == 'church' ? response = await getUsersByChurch(params) : response = await getAllUsers(params);;
 
     switch (response.status) {
         case 200:
             if (response.data.totalItems === 0) {
                 nextScreen = 'notContent';
-                break;
+                
+            } else{
+                const users = response.data.data;
+                manipulateAllData(users);
+                nextScreen = 'tableView';
+                setCssExtendContent();
             }
-
-            const users = response.data.data;
-            manipulateAllData(users);
-            nextScreen = 'tableView';
+           
             break;
 
         case 500:
@@ -48,6 +56,7 @@ const camperView = async (id) => {
             const user = response.data.data[0];
             manipulateData(user);
             nextScreen = 'camperView';
+            setCssExtendContent();
             break;
 
         case 404:
