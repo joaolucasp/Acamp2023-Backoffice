@@ -63,19 +63,6 @@ const processScan = async (qrCodeMessage) => {
     nextStep(nextScreen);
 }
 
-const manipulateSimplifyData = function (data) {
-    let tableView = document.getElementById('tableView');
-
-    document.getElementsByClassName('id-result-search')[0].innerText = data.ID;
-    document.getElementsByClassName('name-result-search')[0].innerText = `${data.Nome} ${data.Sobrenome}`;
-    document.getElementsByClassName('age-result-search')[0].innerText = getAge(data.DataNascimento);
-    getAge(data.DataNascimento) < 18 ? tableView.getElementsByClassName('adult-result-search')[0].innerText = data.NomeResponsavel : document.getElementById('rowAdultResponsible').classList.add('d-none');
-    document.getElementsByClassName('telefone-result-search')[0].innerText = `(${data.DDD}) ${data.Telefone}`;
-    document.getElementsByClassName('church-result-search')[0].innerText = data.Igreja;
-    document.getElementsByClassName('email-result-search')[0].innerText = data.Email;
-    document.getElementsByClassName('payment-result-search')[0].innerText = data.Pagamento;
-}
-
 const confirmCheckin = async () => {
     spinner.on();
     disableSection('tableView');

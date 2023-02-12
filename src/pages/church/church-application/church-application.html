@@ -37,8 +37,10 @@
 
     <!-- Javascript File's -->
     <script src="../../../components/spinner/spinner.js"></script>
+    <script src="../../handler/handlerData.js"></script>
     <script src="../../../api/getAllUsers.js"></script>
     <script src="../../../api/getUser.js"></script>
+    <script src="../../../api/registerCheckin.js"></script>
     <script src="../../../api/getChurchCampers.js"></script>
     <script src="../../../utils/tools.js"></script>
 
@@ -225,7 +227,7 @@
                                     <td class="payment-result-search payment"></td>
                                 </tr>
 
-                                <tr>
+                                <tr id="rowCheckin">
                                     <th scope="row">
                                         <span class="field-result-search">
                                             <i class="fa-solid fa-check"></i>
@@ -258,6 +260,26 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="container d-grid gap-2">
+                        <button id="checkinButton" type="button" class="btn button-success" onclick="confirmCheckin();">
+                            <i class="fa-regular fa-square-check"></i>
+                            <span>Fazer check-in</span>
+                        </button>
+
+                        <button type="button" class="btn button-primary" onclick="window.location='../church.html';">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Voltar</span>
+                        </button>
+                    </div>  
+                </div>
+
+                <div id="checkinSuccess" class="d-none">
+                    <div id="mainImagePage" class="container">
+                        <img class="img-fluid" src="../../../assets/images/success.png" alt="">
+                    </div>
+
+                    <p>Check-in realizado com sucesso!</p>
 
                     <button type="button" class="btn button-primary" onclick="window.location='../church.html';">
                         <i class="fa-solid fa-arrow-left"></i>
