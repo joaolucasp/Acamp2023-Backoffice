@@ -17,7 +17,7 @@
 
 
     <!-- Imports Style CSS -->
-    <link rel="stylesheet" href="../../stylesheet/extend-content.css" type="text/css">
+    <link id="cssContent" rel="stylesheet" href="../../stylesheet/default-content.css" type="text/css">
     <link rel="stylesheet" href="../../../components/bottom-menu/bottom-menu.css" type="text/css">
     <link rel="stylesheet" href="../../../components/header/header.css" type="text/css">
     <link rel="stylesheet" href="../../../utils/color.css" type="text/css">
@@ -51,6 +51,25 @@
     <section id="mainContainer" class="container">
         <div class="row">
             <section id="pageContent">
+
+                <div id="churchRoute" class="d-none">
+                    <h2 class="main-title">Selecione a igreja</h2>
+
+                    <fieldset class="fieldset m-auto w-75">
+                        <div class="form-floating">
+                            <input required='' name="key" id="key" class="form-control field" inputmode="text"
+                                minlength="4" placeholder="Identificador (ID)" autocomplete="off">
+                            <label for="key">Identificador (ID)</label>
+                        </div>
+                    </fieldset>
+
+                    <button type="button" class="btn button-primary"
+                        onclick="onCodeSuccess(document.getElementById('key').value);">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Consultar Acampante</span>
+                    </button>
+
+                </div>
 
                 <div id="tableView" class="d-none">
                     <h2 class="main-title">Todos Check-in's</h2>
@@ -294,6 +313,12 @@
 
     <script src="church.js"></script>
     <script src="../../render-route-pages/routes.js"></script>
+
+    <script>
+        window.onload = function () {
+            firstRoute();
+        }
+    </script>
     
 </body>
 

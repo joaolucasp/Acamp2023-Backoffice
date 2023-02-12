@@ -10,3 +10,9 @@ const getAge = function (date) {
     
     return age;
 }
+
+const setCssExtendContent = function () {
+    const css = document.getElementById('cssContent');
+
+    css.setAttribute('href', '../../stylesheet/extend-content.css');
+}

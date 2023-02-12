@@ -31,6 +31,9 @@
     <!-- Shortcut Icon -->
     <link rel="shortcut icon" href="../../../public/logo.png" type="image/x-icon">
 
+    <!-- Javascript File's -->
+    <script src="../render-route-pages/routes.js"></script>
+
     <title>APP Backoffice - Igrejas </title>
 </head>
 
@@ -51,12 +54,14 @@
                 </p>
 
                 <div class="container d-grid gap-2">
-                    <button type="button" class="btn button-primary" onclick="">
-                        <i class="fa-solid fa-person"></i>
+                    <button type="button" class="btn button-primary" onclick="
+                    setRoute('find-by-church-route');
+                    window.location='church-application/church-application.html';">
                         <span>Acampantes por igreja</span>
                     </button>
     
                     <button type="button" class="btn button-primary" onclick="
+                    setRoute('get-all-checkins-route');
                     window.location='church-application/church-application.html';">
                         <i class="fa-regular fa-square-check"></i>
                         <span>Check-in's totais</span>

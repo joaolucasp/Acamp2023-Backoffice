@@ -31,6 +31,9 @@
     <!-- Shortcut Icon -->
     <link rel="shortcut icon" href="../../../public/logo.png" type="image/x-icon">
 
+    <!-- Javascript File's -->
+    <script src="../render-route-pages/routes.js"></script>
+
     <title>APP Backoffice - Dados </title>
 </head>
 
@@ -56,21 +59,21 @@
 
                 <div class="container d-grid gap-2">
                     <button type="button" class="btn button-primary"
-                        onclick="setRoute('nameRoute');
+                        onclick="setRoute('find-by-name-route');
                         window.location='camper-application/camper-application.html';">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span>Pesquisar por Nome</span>
                     </button>
     
                     <button type="button" class="btn button-primary"
-                        onclick="setRoute('codeRoute');
+                        onclick="setRoute('find-by-code-route');
                         window.location='camper-application/camper-application.html';">
                         <i class="fa-solid fa-hashtag"></i>
                         <span>Pesquisar por código</span>
                     </button>
 
                     <button type="button" class="btn button-primary"
-                        onclick="setRoute('scannerScreen');
+                        onclick="setRoute('find-by-scanner-route');
                         window.location='camper-application/camper-application.html';">
                         <i class="fa-sharp fa-solid fa-qrcode"></i>
                         <span>Scanear QR Code</span>
@@ -103,12 +106,6 @@
             </a>
         </div>
     </nav>
-
-    <script>
-        function setRoute(route) {
-            localStorage.setItem('find-camper', route);
-        }
-    </script>
 
 </body>
 

@@ -1,27 +1,31 @@
-function firstRouteCheckin() {
-    localStorage.getItem('route-scan') == 'codeRoute' ? activeSection('codeRoute') : activeScannerScreen();
-}
-
-function firstRouteData() {
-    const findCamperRoute = localStorage.getItem('find-camper');
+function firstRoute() {
+    const findCamperRoute = localStorage.getItem('first-route');
 
     switch (findCamperRoute) {
-        case 'nameRoute':
+        case 'find-by-name-route':
             activeSection('nameRoute');
             break;
 
-        case 'codeRoute':
+        case 'find-by-code-route':
             activeSection('codeRoute');
             break;
 
-        case 'scannerScreen':
+        case 'find-by-scanner-route':
             activeScannerScreen();
+            break;
+
+        case 'find-by-church-route':
+            activeSection('churchRoute');
+            break;
+
+        case 'get-all-checkins-route':
+            renderTable();
             break;
 
         default:
             break;
     }
-    
+
 }
 
 const nextStep = function (screen) {
@@ -82,4 +86,39 @@ const activeSection = function (id) {
 const disableSection = function (id) {
     var section = document.getElementById(id);
     section.classList.add('d-none');
+}
+
+const getRouteActive = function () {
+    const routeActive = localStorage.getItem('first-route');
+    let route = '';
+
+    switch (routeActive) {
+        case 'find-by-name-route':
+            route = 'nameRoute';
+            break;
+
+        case 'find-by-code-route':
+            route = 'codeRoute';
+            break;
+
+        case 'find-by-scanner-route':
+            route = 'scannerScreen';
+            break;
+
+        case 'find-by-church-route':
+            route = 'churchRoute';
+            break;
+
+        case 'get-all-checkins-route':
+            route = 'tableView';
+            break;
+
+        default:
+            break;
+    }
+    return route;
+}
+
+const setRoute = function (route) {
+    localStorage.setItem('first-route', route);
 }

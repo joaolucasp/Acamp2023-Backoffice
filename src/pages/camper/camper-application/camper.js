@@ -162,13 +162,3 @@ const createRow = function (table, data, position) {
 
     table.appendChild(row);
 }
-
-const getRouteActive = function () {
-    return localStorage.getItem('find-camper');
-}
-
-const setCssExtendContent = function () {
-    const css = document.getElementById('cssContent');
-
-    css.setAttribute('href', '../../stylesheet/extend-content.css');
-}

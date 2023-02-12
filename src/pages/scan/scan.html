@@ -30,6 +30,9 @@
     <!-- Shortcut Icon -->
     <link rel="shortcut icon" href="../../../public/logo.png" type="image/x-icon">
 
+    <!-- Javascript File's -->
+    <script src="../render-route-pages/routes.js"></script>
+
     <title>APP Backoffice - Check-in</title>
 </head>
 
@@ -55,14 +58,14 @@
 
                 <div class="container d-grid gap-2">
                     <button type="button" class="btn button-primary" 
-                        onclick="setRoute('scannerScreen');
+                        onclick="setRoute('find-by-scanner-route');
                         window.location='scanner/scanner.html';">
                         <i class="fa-solid fa-camera"></i>
                         <span>Abrir câmera</span>
                     </button>
 
                     <button type="button" class="btn button-secondary"
-                        onclick="setRoute('codeRoute');
+                        onclick="setRoute('find-by-code-route');
                         window.location='scanner/scanner.html';">
                         <i class="fa-solid fa-hashtag"></i>
                         <span>Digitar o código</span>
@@ -94,12 +97,6 @@
             </a>
         </div>
     </nav>
-
-    <script>
-        function setRoute(route) {
-            localStorage.setItem('route-scan', route);
-        }
-    </script>
 </body>
 
 </html>

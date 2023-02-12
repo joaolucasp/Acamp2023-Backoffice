@@ -2,10 +2,11 @@ const tableSection = document.getElementById('tableView');
 const spinner = new Spinner();
 let nextScreen;
 
-window.addEventListener('load', async () => {
+const renderTable = async () => {
     spinner.on();
     await getTableData('checkin=true');
-});
+    activeSection('tableView');
+}
 
 const getTableData = async (params) => {
     const response = await getAllUsers(params);
@@ -14,7 +15,7 @@ const getTableData = async (params) => {
         case 200:
             if (response.data.totalItems === 0) {
                 nextScreen = 'notContent';
-                break; 
+                break;
             }
 
             const users = response.data.data;
