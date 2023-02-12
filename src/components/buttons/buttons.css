@@ -32,6 +32,7 @@
 .btn span {
     text-transform: uppercase;
     font-weight: semi-bold;
+    font-size: 15px;
 }
 
 .back-button {
