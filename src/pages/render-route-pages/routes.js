@@ -32,6 +32,10 @@ const nextStep = function (screen) {
     switch (screen) {
         case 'tableView':
             activeSection('tableView');
+
+            if(localStorage.getItem('first-route') == 'get-all-checkins-route') {
+                activeSection('btnClipboard')
+            }
             break;
 
         case 'camperView':
