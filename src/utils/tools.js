@@ -3,11 +3,11 @@ const getAge = function (date) {
     const birthDate = new Date(date);
     let age = today.getFullYear() - birthDate.getFullYear();
     const m = today.getMonth() - birthDate.getMonth();
-    
+
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
     }
-    
+
     return age;
 }
 
@@ -21,4 +21,16 @@ const setCssDefaultContent = function () {
     const css = document.getElementById('cssContent');
 
     css.setAttribute('href', '../../stylesheet/default-content.css');
+}
+
+const copyToClipboard = async () => {
+    const response = await getAllUsers('checkin=true');
+    let content = '';
+
+    for (let i = 0; i < response.data.data.length; i++) {
+        const user = response.data.data[i];
+        content += `${user.Nome} ${user.Sobrenome}` + '\n';
+    }
+
+    navigator.clipboard.writeText(content);
 }
