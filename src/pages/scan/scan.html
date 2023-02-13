@@ -25,7 +25,8 @@
     <link rel="stylesheet" href="../../components/buttons/buttons.css" type="text/css">
 
     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/eac825cd8d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../assets/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/font-awesome/css/fontawesome.min.css">
 
     <!-- Shortcut Icon -->
     <link rel="shortcut icon" href="../../../public/logo.png" type="image/x-icon">
@@ -49,23 +50,23 @@
                 </div>
 
                 <p>
-                    Nesta aba você pode <strong>realizar Check-in's</strong>, registrando a <strong>entrada</strong> de um acampante no acampamento!
+                    Nesta aba você pode <strong>realizar Check-in's</strong>, registrando a <strong>entrada</strong> de
+                    um acampante no acampamento!
 
                     <br><br>
-                    
-                    Para isso, basta escanear o <strong>QR Code</strong> que foi enviado ao acampante ou digitar o código manualmente.
+
+                    Para isso, basta escanear o <strong>QR Code</strong> que foi enviado ao acampante ou digitar o
+                    código manualmente.
                 </p>
 
                 <div class="container d-grid gap-2">
-                    <button type="button" class="btn button-primary" 
-                        onclick="setRoute('find-by-scanner-route');
+                    <button type="button" class="btn button-primary" onclick="setRoute('find-by-scanner-route');
                         window.location='scanner/scanner.html';">
                         <i class="fa-solid fa-camera"></i>
                         <span>Abrir câmera</span>
                     </button>
 
-                    <button type="button" class="btn button-secondary"
-                        onclick="setRoute('find-by-code-route');
+                    <button type="button" class="btn button-secondary" onclick="setRoute('find-by-code-route');
                         window.location='scanner/scanner.html';">
                         <i class="fa-solid fa-hashtag"></i>
                         <span>Digitar o código</span>

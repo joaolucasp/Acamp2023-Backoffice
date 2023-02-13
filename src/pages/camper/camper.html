@@ -26,7 +26,8 @@
     <link rel="stylesheet" href="../../components/buttons/buttons.css" type="text/css">
 
     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/eac825cd8d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../assets/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/font-awesome/css/fontawesome.min.css">
 
     <!-- Shortcut Icon -->
     <link rel="shortcut icon" href="../../../public/logo.png" type="image/x-icon">
@@ -50,30 +51,29 @@
                 </div>
 
                 <p>
-                    Nesta aba você pode <strong>encontrar a ficha completa de um acampante</strong>, encontrar informações de contato, pagamento, alergias e outros.
+                    Nesta aba você pode <strong>encontrar a ficha completa de um acampante</strong>, encontrar
+                    informações de contato, pagamento, alergias e outros.
 
                     <br><br>
 
-                    Você pode pesquisar por nome ou por <strong>QR Code</strong> que está impresso na ficha do acampante.
+                    Você pode pesquisar por nome ou por <strong>QR Code</strong> que está impresso na ficha do
+                    acampante.
                 </p>
 
                 <div class="container d-grid gap-2">
-                    <button type="button" class="btn button-primary"
-                        onclick="setRoute('find-by-name-route');
+                    <button type="button" class="btn button-primary" onclick="setRoute('find-by-name-route');
                         window.location='camper-application/camper-application.html';">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span>Pesquisar por Nome</span>
                     </button>
-    
-                    <button type="button" class="btn button-primary"
-                        onclick="setRoute('find-by-code-route');
+
+                    <button type="button" class="btn button-primary" onclick="setRoute('find-by-code-route');
                         window.location='camper-application/camper-application.html';">
                         <i class="fa-solid fa-hashtag"></i>
                         <span>Pesquisar por código</span>
                     </button>
 
-                    <button type="button" class="btn button-primary"
-                        onclick="setRoute('find-by-scanner-route');
+                    <button type="button" class="btn button-primary" onclick="setRoute('find-by-scanner-route');
                         window.location='camper-application/camper-application.html';">
                         <i class="fa-sharp fa-solid fa-qrcode"></i>
                         <span>Scanear QR Code</span>
