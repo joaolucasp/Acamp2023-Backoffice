@@ -1,0 +1,19 @@
+{
+    "short_name": "Acamp23",
+    "name": "App Backoffice Acampamento",
+    "start_url": "../../index.html",
+    "display": "standalone",
+    "theme_color": "#2E6198",
+    "theme-color": "#2E6198",
+    "background_color": "#D9D9D9",
+    "background-color": "#D9D9D9",
+    "description": "Site de gestão backoffice Acampamento Quadrangular Região 513",
+    "icons": [
+        {
+            "src": "../../public/logo.png",
+            "sizes": "189x189",
+            "type": "image/png"
+        }
+    ]
+
+}
