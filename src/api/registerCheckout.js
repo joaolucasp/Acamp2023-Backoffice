@@ -1,8 +1,8 @@
-const urlRegister = `http://localhost:3001/register/`
-const module = `checkin/`
+const urlRegister2 = `http://localhost:3001/register/`
+const moduleCheckout = `checkout/`
 
 const registerCheckin = async (id) => {
-    const urlServer = `${urlRegister}${module}${id}`
+    const urlServer = `${urlRegister2}${moduleCheckout}${id}`
 
     const response = await fetch(urlServer, {
         method: 'POST',

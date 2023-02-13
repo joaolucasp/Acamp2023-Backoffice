@@ -11,6 +11,11 @@ const getAge = function (date) {
     return age;
 }
 
+const getDate = () => {
+    let date = new Date();
+    return stringDate = ((date.getHours() < 9 ? `0${date.getHours()}` : date.getHours()) + ":" + (date.getMinutes() < 9 ? `0${date.getMinutes()}` : date.getMinutes()) + " & " + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear());
+}
+
 const setCssExtendContent = function () {
     const css = document.getElementById('cssContent');
 
