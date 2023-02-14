@@ -1,8 +1,5 @@
-const urlRegister = `http://localhost:3001/register/`
-const module = `checkin/`
-
 const registerCheckin = async (id) => {
-    const urlServer = `${urlRegister}${module}${id}`
+    const urlServer = `${urlAPIServer}${registerModule}${registerCheckinEndpoint}${id}`
 
     const response = await fetch(urlServer, {
         method: 'POST',

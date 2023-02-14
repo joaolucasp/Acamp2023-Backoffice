@@ -1,4 +1,4 @@
-const urlPaymentModule = `http://localhost:3001/payment/`
+const urlPaymentModule = `http://192.168.1.196:3001/payment/`
 const endpointPayment = `getPayments/`
 
 const getUsersByChurch = async (params) => {

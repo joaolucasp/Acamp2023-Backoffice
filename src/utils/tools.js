@@ -1,3 +1,13 @@
+const urlAPIServer = `http://192.168.1.196:3001/`
+const userModule = `user/`
+const registerModule = `register/`
+const paymentModule = `payment/`
+const allUsersEndpoint = `getUsers/`
+const singleUserEndpoint = `getSingleUser/`
+const registerCheckinEndpoint = `checkin/`
+const registerCheckoutEndpoint = `checkin/`
+const getPaymentsEndpoint = `getPayments/`
+
 const getAge = function (date) {
     const today = new Date();
     const birthDate = new Date(date);

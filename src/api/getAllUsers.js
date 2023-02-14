@@ -1,10 +1,7 @@
-const urlUserModule1 = `http://localhost:3001/user/`
-const endpoint = `getUsers/`
-
 const getAllUsers = async (params) => {
     try {
         var urlServer = '';
-        params ? urlServer = `${urlUserModule1}${endpoint}?${params}` : urlServer = `${urlUserModule1}${endpoint}`;
+        params ? urlServer = `${urlAPIServer}${userModule}${allUsersEndpoint}?${params}` : urlServer = `${urlAPIServer}${userModule}${allUsersEndpoint}`;
 
         const response = await fetch(urlServer);
     

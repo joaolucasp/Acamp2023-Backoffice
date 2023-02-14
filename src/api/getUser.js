@@ -1,9 +1,6 @@
-const urlUserModule2 = `http://localhost:3001/user/`
-const endpointSingleUser = `getSingleUser/`
-
 const getSingleUser = async (id) => {
     try {
-        const urlServer = `${urlUserModule2}${endpointSingleUser}${id}`
+        const urlServer = `${urlAPIServer}${userModule}${singleUserEndpoint}${id}`
         const response = await fetch(urlServer);
     
         if(!response.ok) return {status: response.status};
