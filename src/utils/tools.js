@@ -29,13 +29,13 @@ const getDate = () => {
 const setCssExtendContent = function () {
     const css = document.getElementById('cssContent');
 
-    css.setAttribute('href', '../../stylesheet/extend-content.css');
+    css.setAttribute('href', '../stylesheet/extend-content.css');
 }
 
 const setCssDefaultContent = function () {
     const css = document.getElementById('cssContent');
 
-    css.setAttribute('href', '../../stylesheet/default-content.css');
+    css.setAttribute('href', '../stylesheet/default-content.css');
 }
 
 const copyToClipboard = async () => {

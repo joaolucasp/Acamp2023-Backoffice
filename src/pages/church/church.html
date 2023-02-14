@@ -57,13 +57,13 @@
                 <div class="container d-grid gap-2">
                     <button type="button" class="btn button-primary" onclick="
                     setRoute('find-by-church-route');
-                    window.location='church-application/church-application.html';">
+                    window.location='../application/application.html'">
                         <span>Acampantes por igreja</span>
                     </button>
 
                     <button type="button" class="btn button-primary" onclick="
                     setRoute('get-all-checkins-route');
-                    window.location='church-application/church-application.html';">
+                    window.location='../application/application.html'">
                         <i class="fa-regular fa-square-check"></i>
                         <span>Check-in's totais</span>
                     </button>
@@ -76,19 +76,19 @@
 
     <nav id="bottomMenu" class="navbar">
         <div class="section-buttons">
-            <a class="item-menu navbar-brand" href="../scan/scan.html">
-                <i class="fa-sharp fa-solid fa-qrcode" color="">
+            <a class="item-menu navbar-brand" href="../checkin/checkin.html" onclick="setModuleSelector('checkin')">
+                <i class="fa-sharp fa-solid fa-qrcode">
                     <span>Check-in</span>
                 </i>
             </a>
 
-            <a class="item-menu navbar-brand" href="../camper/camper.html">
+            <a class="item-menu navbar-brand" href="../camper/camper.html" onclick="setModuleSelector('camper')">
                 <i class="fa-solid fa-circle-user">
                     <span>Dados</span>
                 </i>
             </a>
 
-            <a class="actived item-menu navbar-brand" href="#">
+            <a class="item-menu navbar-brand actived" href="#" onclick="setModuleSelector('church')">
                 <i class="fa-solid fa-church">
                     <span>Igreja</span>
                 </i>

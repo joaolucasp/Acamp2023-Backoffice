@@ -61,19 +61,19 @@
 
                 <div class="container d-grid gap-2">
                     <button type="button" class="btn button-primary" onclick="setRoute('find-by-name-route');
-                        window.location='camper-application/camper-application.html';">
+                        window.location='../application/application.html'">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span>Pesquisar por Nome</span>
                     </button>
 
                     <button type="button" class="btn button-primary" onclick="setRoute('find-by-code-route');
-                        window.location='camper-application/camper-application.html';">
+                        window.location='../application/application.html'">
                         <i class="fa-solid fa-hashtag"></i>
                         <span>Pesquisar por código</span>
                     </button>
 
                     <button type="button" class="btn button-primary" onclick="setRoute('find-by-scanner-route');
-                        window.location='camper-application/camper-application.html';">
+                        window.location='../application/application.html'">
                         <i class="fa-sharp fa-solid fa-qrcode"></i>
                         <span>Scanear QR Code</span>
                     </button>
@@ -86,26 +86,25 @@
 
     <nav id="bottomMenu" class="navbar">
         <div class="section-buttons">
-            <a class="item-menu navbar-brand" href="../scan/scan.html">
+            <a class="item-menu navbar-brand" href="../checkin/checkin.html" onclick="setModuleSelector('checkin')">
                 <i class="fa-sharp fa-solid fa-qrcode">
                     <span>Check-in</span>
                 </i>
             </a>
 
-            <a class="actived item-menu navbar-brand" href="#">
+            <a class="item-menu navbar-brand actived" href="#" onclick="setModuleSelector('camper')">
                 <i class="fa-solid fa-circle-user">
                     <span>Dados</span>
                 </i>
             </a>
 
-            <a class="item-menu navbar-brand" href="../church/church.html">
+            <a class="item-menu navbar-brand" href="../church/church.html" onclick="setModuleSelector('church')">
                 <i class="fa-solid fa-church">
                     <span>Igreja</span>
                 </i>
             </a>
         </div>
     </nav>
-
 </body>
 
 </html>

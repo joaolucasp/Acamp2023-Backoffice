@@ -1,7 +1,7 @@
 function firstRoute() {
-    const findCamperRoute = localStorage.getItem('first-route');
+    const firstRoute = localStorage.getItem('first-route');
 
-    switch (findCamperRoute) {
+    switch (firstRoute) {
         case 'find-by-name-route':
             activeSection('nameRoute');
             break;
@@ -26,6 +26,53 @@ function firstRoute() {
             break;
     }
 
+    activeItemBottomMenu();
+}
+
+const activeItemBottomMenu = function () {
+    const module = localStorage.getItem('module');
+    const bottomMenu = document.getElementById('bottomMenu');
+
+    switch (module) {
+        case 'checkin':
+            const linkCheckin = bottomMenu.getElementsByClassName('item-menu')[0];
+            linkCheckin.classList.add('actived');
+            break;
+
+        case 'camper':
+            const linkcamper = bottomMenu.getElementsByClassName('item-menu')[1];
+            linkcamper.classList.add('actived');
+            break;
+
+        case 'church':
+            const linkchurch = bottomMenu.getElementsByClassName('item-menu')[2];
+            linkchurch.classList.add('actived');
+            break;
+
+        default:
+            break
+    }
+}
+
+const renderModule = function () {
+    const module = localStorage.getItem('module');
+
+    switch (module) {
+        case 'checkin':
+            window.location.href = '../checkin/checkin.html';
+            break;
+
+        case 'camper':
+            window.location.href = '../camper/camper.html';
+            break;
+
+        case 'church':
+            window.location.href = '../church/church.html';
+            break;
+
+        default:
+            break;
+    }
 }
 
 const nextStep = function (screen) {
@@ -33,13 +80,17 @@ const nextStep = function (screen) {
         case 'tableView':
             activeSection('tableView');
 
-            if(localStorage.getItem('first-route') == 'get-all-checkins-route') {
+            if (localStorage.getItem('first-route') == 'get-all-checkins-route') {
                 activeSection('btnClipboard')
             }
             break;
 
-        case 'camperView':
-            activeSection('camperView');
+        case 'camperViewComplete':
+            activeSection('camperViewComplete');
+            break;
+
+        case 'camperViewSimplify':
+            activeSection('camperViewSimplify');
             break;
 
         case 'notFound':
@@ -129,4 +180,8 @@ const getRouteActive = function () {
 
 const setRoute = function (route) {
     localStorage.setItem('first-route', route);
+}
+
+function setModuleSelector(module) {
+    localStorage.setItem('module', module);
 }

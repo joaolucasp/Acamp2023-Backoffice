@@ -62,25 +62,27 @@
 
     <nav id="bottomMenu" class="navbar">
         <div class="section-buttons">
-            <a class="item-menu navbar-brand" href="src/pages/scan/scan.html">
-                <i class="fa-sharp fa-solid fa-qrcode" color="">
+            <a class="item-menu navbar-brand" href="src/pages/checkin/checkin.html" onclick="setModuleSelector('checkin')">
+                <i class="fa-sharp fa-solid fa-qrcode">
                     <span>Check-in</span>
                 </i>
             </a>
 
-            <a class="item-menu navbar-brand" href="src/pages/camper/camper.html">
+            <a class="item-menu navbar-brand" href="src/pages/camper/camper.html" onclick="setModuleSelector('camper')">
                 <i class="fa-solid fa-circle-user">
                     <span>Dados</span>
                 </i>
             </a>
 
-            <a class="item-menu navbar-brand" href="src/pages/church/church.html">
+            <a class="item-menu navbar-brand" href="src/pages/church/church.html" onclick="setModuleSelector('church')">
                 <i class="fa-solid fa-church">
                     <span>Igreja</span>
                 </i>
             </a>
         </div>
     </nav>
+
+    <script src="src/pages/render-route-pages/routes.js"></script>
 </body>
 
 </html>

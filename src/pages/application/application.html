@@ -12,45 +12,46 @@
         content="App Backoffice Acampamento 2023 - Igreja do Evangelho Quadrangular Região 513" />
 
     <!-- Bootstrap CSS & JS-->
-    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
-    <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Imports Style CSS -->
-    <link id="cssContent" rel="stylesheet" href="../../stylesheet/default-content.css" type="text/css">
-    <link rel="stylesheet" href="../../../components/bottom-menu/bottom-menu.css" type="text/css">
-    <link rel="stylesheet" href="../../../components/header/header.css" type="text/css">
-    <link rel="stylesheet" href="../../../utils/color.css" type="text/css">
-    <link rel="stylesheet" href="../../../utils/typography.css" type="text/css">
+    <link id="cssContent" rel="stylesheet" href="../stylesheet/default-content.css" type="text/css">
+    <link rel="stylesheet" href="../../components/bottom-menu/bottom-menu.css" type="text/css">
+    <link rel="stylesheet" href="../../components/header/header.css" type="text/css">
+    <link rel="stylesheet" href="../../utils/color.css" type="text/css">
+    <link rel="stylesheet" href="../../utils/typography.css" type="text/css">
 
     <!-- Imports Components CSS -->
-    <link rel="stylesheet" href="../../../components/single-result-search/single-result-search.css">
-    <link rel="stylesheet" href="../../../components/multiple-result-search/multiple-result-search.css">
-    <link rel="stylesheet" href="../../../components/main-image-page/main-image-page.css">
-    <link rel="stylesheet" href="../../../components/buttons/buttons.css" type="text/css">
-    <link rel="stylesheet" href="../../../components/field/field.css" type="text/css">
-    <link rel="stylesheet" href="../../../components/scanner-qrcode/scanner.css">
+    <link rel="stylesheet" href="../../components/single-result-search/single-result-search.css">
+    <link rel="stylesheet" href="../../components/multiple-result-search/multiple-result-search.css">
+    <link rel="stylesheet" href="../../components/main-image-page/main-image-page.css">
+    <link rel="stylesheet" href="../../components/buttons/buttons.css" type="text/css">
+    <link rel="stylesheet" href="../../components/field/field.css" type="text/css">
+    <link rel="stylesheet" href="../../components/scanner-qrcode/scanner.css">
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="../../../assets/font-awesome/css/all.min.css">
-    <link rel="stylesheet" href="../../../assets/font-awesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../../assets/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/font-awesome/css/fontawesome.min.css">
 
     <!-- Javascript File's -->
-    <script src="../../../components/spinner/spinner.js"></script>
-    <script src="../../../api/getAllUsers.js"></script>
-    <script src="../../../api/getUser.js"></script>
-    <script src="../../../api/registerCheckin.js"></script>
-    <script src="../../../api/registerCheckout.js"></script>
-    <script src="../../../utils/tools.js"></script>
+    <script src="../../components/spinner/spinner.js"></script>
+    <script src="../../api/getAllUsers.js"></script>
+    <script src="../../api/getUser.js"></script>
+    <script src="../../api/registerCheckin.js"></script>
+    <script src="../../api/registerCheckout.js"></script>
+    <script src="../../api/getChurchCampers.js"></script>
+    <script src="../../utils/tools.js"></script>
 
     <!-- Shortcut Icon -->
-    <link rel="shortcut icon" href="../../../../public/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../public/logo.png" type="image/x-icon">
 
-    <title>APP Backoffice - Dados </title>
+    <title>APP Backoffice</title>
 </head>
 
 <body>
     <header id="header">
-        <img class="img-fluid" src="../../../../public/deeper-white.png" alt="">
+        <img class="img-fluid" src="../../../public/deeper-white.png" alt="">
     </header>
 
     <section id="mainContainer" class="container">
@@ -68,7 +69,7 @@
                     </fieldset>
 
                     <button type="button" class="btn button-primary"
-                        onclick="processFind('complete', document.getElementById('name').value);">
+                        onclick="processFind(document.getElementById('name').value);">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span>Consultar Acampante</span>
                     </button>
@@ -86,13 +87,49 @@
                     </fieldset>
 
                     <button type="button" class="btn button-primary"
-                        onclick="onCodeSuccess('complete', document.getElementById('key').value);">
+                        onclick="onCodeSuccess(document.getElementById('key').value);">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span>Consultar Acampante</span>
                     </button>
                 </div>
 
                 <div id="scannerScreen" class="d-none">
+                </div>
+
+                <div id="churchRoute" class="d-none">
+                    <h2 class="main-title">Selecione a igreja</h2>
+
+                    <fieldset class="fieldset m-auto w-75">
+                        <div class="form-floating">
+                            <select required="" inputmode="select" class="form-control field" name="church" id="church">
+                                <option value="" selected disabled="">Opções para escolha</option>
+                                <option value="ieq-aguavermelha">IEQ - Água Vermelha</option>
+                                <option value="ieq-azulville">IEQ - Azulville</option>
+                                <option value="ieq-boavista">IEQ - Boa Vista</option>
+                                <option value="ieq-botafogo">IEQ - Botafogo</option>
+                                <option value="ieq-cruzeiro">IEQ - Cruzeiro do Sul</option>
+                                <option value="ieq-descalvado">IEQ - Descalvado</option>
+                                <option value="ieq-ibate">IEQ - Ibaté</option>
+                                <option value="ieq-itirapina">IEQ - Itirapina</option>
+                                <option value="ieq-tangara">IEQ - Jardim Tangará</option>
+                                <option value="ieq-jockeyclub">IEQ - Jockey Club</option>
+                                <option value="ieq-planaltoparaiso">IEQ - Planalto Paraiso</option>
+                                <option value="ieq-ribeiraobonito">IEQ - Ribeirão Bonito</option>
+                                <option value="ieq-santafelicia">IEQ - Santa Felícia</option>
+                                <option value="ieq-vilabrasilia">IEQ - Vila Brasília</option>
+                                <option value="outra-igreja">Outra</option>
+                            </select>
+
+                            <label for="church">Igreja</label>
+                        </div>
+                    </fieldset>
+
+                    <button type="button" class="btn button-primary"
+                        onclick="findCamperByChurch(document.getElementById('church').value)">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Consultar Acampantes</span>
+                    </button>
+
                 </div>
 
                 <div id="tableView" class="d-none">
@@ -127,13 +164,151 @@
                         </table>
                     </div>
 
-                    <button type="button" class="btn button-secondary" onclick="window.location='../camper.html';">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <span>Voltar</span>
-                    </button>
+                    <div class="container d-grid gap-2">
+                        <button id="btnClipboard" type="button" class="btn button-primary d-none" onclick="copyToClipboard();">
+                            <i class="fa-regular fa-clipboard"></i>
+                            <span>Copiar nomes</span>
+                        </button>
+
+                        <button type="button" class="btn button-secondary" onclick="renderModule()">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Voltar</span>
+                        </button>
+                    </div>
+                    
                 </div>
 
-                <div id="camperView" class="d-none">
+                <div id="camperViewSimplify" class="d-none">
+                    <h2 class="main-title">Dados do Acampante</h2>
+
+                    <div class="table-responsive">
+                        <table id="simplifyResultSearch" class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-hashtag"></i>
+                                            ID
+                                        </span>
+                                    </th>
+                                    <td class="id-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-person"></i>
+                                            Nome
+                                        </span>
+                                    </th>
+                                    <td class="name-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-regular fa-calendar"></i>
+                                            Idade
+                                        </span>
+                                    </th>
+                                    <td class="age-result-search"></td>
+                                </tr>
+
+                                <tr id="rowAdultResponsible1">
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-regular fa-user"></i>
+                                            Responsável
+                                        </span>
+                                    </th>
+                                    <td class="adult-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-mobile"></i>
+                                            Telefone
+                                        </span>
+                                    </th>
+                                    <td class="telefone-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-cross"></i>
+                                            Igreja
+                                        </span>
+                                    </th>
+                                    <td class="church-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-envelope"></i>
+                                            E-mail
+                                        </span>
+                                    </th>
+                                    <td class="email-result-search"></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-credit-card"></i>
+                                            Pagamento
+                                        </span>
+                                    </th>
+                                    <td class="payment-result-search payment"></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="buttons-container d-grid gap-2">
+                        <button type="button" class="btn button-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Confirmar Check-in</span>
+                        </button>
+
+                        <button type="button" class="btn button-secondary" onclick="renderModule()">
+                            <i class="fa-solid fa-times"></i>
+                            <span>Cancelar</span>
+                        </button>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                        Confirmar <strong>Check-in</strong> do acampante?
+                                    </h1>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="d-inline-block w-100">
+                                        <button type="button" class="btn button-primary w-25" data-bs-dismiss="modal"
+                                            onclick="confirmCheckin();">
+                                            Sim
+                                        </button>
+
+                                        <button type="button" class="btn button-secondary w-25" data-bs-dismiss="modal">
+                                            Não
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="camperViewComplete" class="d-none">
                     <h2 class="main-title">Dados do acampante</h2>
 
                     <div class="table-responsive">
@@ -179,7 +354,7 @@
                                     <td class="age-result-search"></td>
                                 </tr>
 
-                                <tr id="rowAdultResponsible">
+                                <tr id="rowAdultResponsible2">
                                     <th scope="row">
                                         <span class="field-result-search">
                                             <i class="fa-regular fa-user"></i>
@@ -284,7 +459,7 @@
                             <span>Fazer check-out</span>
                         </button>
 
-                        <button type="button" class="btn button-secondary" onclick="window.location='../camper.html';">
+                        <button type="button" class="btn button-secondary" onclick="renderModule()">
                             <i class="fa-solid fa-arrow-left"></i>
                             <span>Voltar</span>
                         </button>
@@ -293,12 +468,12 @@
 
                 <div id="checkinSuccess" class="d-none">
                     <div id="mainImagePage" class="container">
-                        <img class="img-fluid" src="../../../assets/images/success.png" alt="">
+                        <img class="img-fluid" src="../../assets/images/success.png" alt="">
                     </div>
 
                     <p>Check-in realizado com sucesso!</p>
 
-                    <button type="button" class="btn button-secondary" onclick="window.location='../camper.html';">
+                    <button type="button" class="btn button-secondary" onclick="renderModule()">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span>Voltar</span>
                     </button>
@@ -306,12 +481,12 @@
 
                 <div id="checkoutSuccess" class="d-none">
                     <div id="mainImagePage" class="container">
-                        <img class="img-fluid" src="../../../assets/images/success.png" alt="">
+                        <img class="img-fluid" src="../../assets/images/success.png" alt="">
                     </div>
 
                     <p>Check-out realizado com sucesso!</p>
 
-                    <button type="button" class="btn button-secondary" onclick="window.location='../camper.html';">
+                    <button type="button" class="btn button-secondary" onclick="renderModule()">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span>Voltar</span>
                     </button>
@@ -319,12 +494,12 @@
 
                 <div id="notFound" class="d-none">
                     <div id="mainImagePage" class="container">
-                        <img class="img-fluid" src="../../../assets/images/emoji-sad.png" alt="">
+                        <img class="img-fluid" src="../../assets/images/emoji-sad.png" alt="">
                     </div>
 
                     <p><strong>Acampante não encontrado!</strong> Verifique os dados e tente novamente.</p>
 
-                    <button type="button" class="btn button-secondary" onclick="window.location='../camper.html';">
+                    <button type="button" class="btn button-secondary" onclick="renderModule()">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span>Voltar</span>
                     </button>
@@ -332,12 +507,12 @@
 
                 <div id="notContent" class="d-none">
                     <div id="mainImagePage" class="container">
-                        <img class="img-fluid" src="../../../assets/images/emoji-sad.png" alt="">
+                        <img class="img-fluid" src="../../assets/images/emoji-sad.png" alt="">
                     </div>
 
                     <p><strong>Não há resultados para serem exibidos!</strong> Tente outro nome!</p>
 
-                    <button type="button" class="btn button-primary" onclick="window.location='../camper.html';">
+                    <button type="button" class="btn button-primary" onclick="renderModule()">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span>Tentar novamente</span>
                     </button>
@@ -345,12 +520,12 @@
 
                 <div id="serverError" class="d-none">
                     <div id="mainImagePage" class="container">
-                        <img class="img-fluid" src="../../../assets/images/server-error.png" alt="">
+                        <img class="img-fluid" src="../../assets/images/server-error.png" alt="">
                     </div>
 
                     <p><strong>Erro no servidor!</strong> Contate o João Lucas.</p>
 
-                    <button type="button" class="btn button-secondary" onclick="window.location='../camper.html';">
+                    <button type="button" class="btn button-secondary" onclick="renderModule()">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span>Voltar</span>
                     </button>
@@ -363,19 +538,19 @@
 
     <nav id="bottomMenu" class="navbar">
         <div class="section-buttons">
-            <a class="item-menu navbar-brand" href="../../scan/scan.html">
+            <a class="item-menu navbar-brand" href="../checkin/checkin.html" onclick="setModuleSelector('checkin')">
                 <i class="fa-sharp fa-solid fa-qrcode">
                     <span>Check-in</span>
                 </i>
             </a>
 
-            <a class="actived item-menu navbar-brand" href="../camper.html">
+            <a class="item-menu navbar-brand" href="../camper/camper.html" onclick="setModuleSelector('camper')">
                 <i class="fa-solid fa-circle-user">
                     <span>Dados</span>
                 </i>
             </a>
 
-            <a class="item-menu navbar-brand" href="../../church/church.html">
+            <a class="item-menu navbar-brand" href="../church/church.html" onclick="setModuleSelector('church')">
                 <i class="fa-solid fa-church">
                     <span>Igreja</span>
                 </i>
@@ -383,10 +558,10 @@
         </div>
     </nav>
 
-    <script src="../../../components/scanner-qrcode/html5-qrcode.min.js"></script>
-    <script src="../../render-route-pages/routes.js"></script>
-    <script src="../../handler/handlerData.js"></script>
-    <script src="../../handler/processData.js"></script>
+    <script src="../../components/scanner-qrcode/html5-qrcode.min.js"></script>
+    <script src="../render-route-pages/routes.js"></script>
+    <script src="../handler/handlerData.js"></script>
+    <script src="../handler/processData.js"></script>
 
     <script>
         window.onload = function () {

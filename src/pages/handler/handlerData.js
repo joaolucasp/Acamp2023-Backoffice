@@ -1,10 +1,19 @@
 let camperViewTable = document.getElementById('camperView');
 
 const manipulateSingleData = function (displayMethod, data) {
+    displayMethod === 'complete' ?  camperViewTable = document.getElementById('camperViewComplete') : camperViewTable = document.getElementById('camperViewSimplify');
+
     camperViewTable.getElementsByClassName('id-result-search')[0].innerText = data.ID;
     camperViewTable.getElementsByClassName('name-result-search')[0].innerText = `${data.Nome} ${data.Sobrenome}`;
     camperViewTable.getElementsByClassName('age-result-search')[0].innerText = getAge(data.DataNascimento);
-    getAge(data.DataNascimento) < 18 ? camperViewTable.getElementsByClassName('adult-result-search')[0].innerText = data.NomeResponsavel : document.getElementById('rowAdultResponsible').classList.add('d-none');
+    
+    if(getAge(data.DataNascimento) >= 18){
+        document.getElementById('rowAdultResponsible1').classList.add('d-none');
+        document.getElementById('rowAdultResponsible2').classList.add('d-none');
+    } else {
+        camperViewTable.getElementsByClassName('adult-result-search')[0].innerText = data.NomeResponsavel
+    }
+
     camperViewTable.getElementsByClassName('telefone-result-search')[0].innerText = `(${data.DDD}) ${data.Telefone}`;
     camperViewTable.getElementsByClassName('church-result-search')[0].innerText = data.Igreja;
     camperViewTable.getElementsByClassName('email-result-search')[0].innerText = data.Email;

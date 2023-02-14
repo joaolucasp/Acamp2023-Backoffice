@@ -19,57 +19,54 @@ const activeScannerScreen = function () {
 async function onScanSuccess(qrCodeMessage) {
     IDUser = qrCodeMessage;
     html5QrcodeScanner.clear();
-    await processFind('simplify', qrCodeMessage);
+    await processFind(qrCodeMessage);
 }
 
-async function onCodeSuccess(displayMethod, qrCodeMessage) {
-    IDUser = qrCodeMessage;
-    await processFind(displayMethod, qrCodeMessage);
+async function onCodeSuccess(codeMessage) {
+    IDUser = codeMessage;
+    await processFind(codeMessage);
 }
 
 function onScanError(errorMessage) {
     //handle scan error
 }
 
-const processFind = async (displayMethod, query) => {
+const processFind = async (query) => {
     spinner.on();
     const routeActive = getRouteActive();
+    const moduleActive = localStorage.getItem('module');
     disableSection(routeActive);
 
-    switch (routeActive) {
-        case 'nameRoute':
-            response = await getAllUsers(`name=${query}`)
-            break;
-
-        case 'churchRoute':
-            response = await getUsersByChurch(query)
-            break;
-
-        case 'tableView':
-            response = await getAllUsers(query);
-            break;
-
-        default:
-            response = await getSingleUser(query);
-            break;
-    }
+    const response = await getResponseBasedOnRoute(routeActive, query);
 
     switch (response.status) {
         case 200:
+            if (response.data.totalItems === 0) {
+                nextScreen = 'notContent';
+                break;
+            }
+
             if (routeActive === 'nameRoute' || routeActive === 'churchRoute' || routeActive === 'tableView') {
-                if (response.data.totalItems === 0) {
-                    nextScreen = 'notContent';
-                } else {
-                    const users = response.data.data;
-                    manipulateAllData(users);
-                    nextScreen = 'tableView';
-                    setCssExtendContent();
-                }
+                const users = response.data.data;
+                manipulateAllData(users);
+                nextScreen = 'tableView';
+                setCssExtendContent();
+
             } else {
                 const user = response.data.data[0];
+                let displayMethod;
+
+                moduleActive === 'checkin' ? displayMethod = 'simplify' : displayMethod = 'complete';
+
                 manipulateSingleData(displayMethod, user);
-                nextScreen = 'camperView';
-                displayMethod == 'complete' ? setCssExtendContent() : setCssDefaultContent();
+
+                if (displayMethod == 'complete') {
+                    nextScreen = 'camperViewComplete';
+                    setCssExtendContent()
+                } else {
+                    nextScreen = 'camperViewSimplify';
+                    setCssDefaultContent();
+                }
             }
             break;
 
@@ -92,9 +89,33 @@ const processFind = async (displayMethod, query) => {
     nextStep(nextScreen);
 }
 
+const getResponseBasedOnRoute = async (routeActive, query) => {
+    let response;
+
+    switch (routeActive) {
+        case 'nameRoute':
+            response = await getAllUsers(`name=${query}`)
+            break;
+
+        case 'churchRoute':
+            response = await getUsersByChurch(query)
+            break;
+
+        case 'tableView':
+            response = await getAllUsers(query);
+            break;
+
+        default:
+            response = await getSingleUser(query);
+            break;
+    }
+
+    return response;
+}
+
 const confirmCheckin = async () => {
     spinner.on();
-    disableSection('camperView');
+    localStorage.getItem('module') === 'checkin' ? disableSection('camperViewSimplify') : disableSection('camperViewComplete');
     const response = await registerCheckin(IDUser);
 
     switch (response.status) {
@@ -119,7 +140,7 @@ const confirmCheckin = async () => {
 
 const confirmCheckout = async () => {
     spinner.on();
-    disableSection('camperView');
+    localStorage.getItem('module') === 'checkin' ? disableSection('camperViewSimplify') : disableSection('camperViewComplete');
     const response = await registerCheckout(IDUser);
 
     switch (response.status) {
@@ -153,7 +174,7 @@ const camperView = async (id) => {
             const user = response.data.data[0];
             IDUser = user.ID;
             manipulateSingleData('complete', user);
-            nextScreen = 'camperView';
+            nextScreen = 'camperViewComplete';
             setCssExtendContent();
             break;
 
@@ -179,11 +200,11 @@ const camperView = async (id) => {
 
 const renderTable = async () => {
     spinner.on();
-    await processFind('complete', 'checkin=true');
+    await processFind('checkin=true');
 }
 
 const findCamperByChurch = async (church) => {
     disableSection('churchRoute');
     spinner.on();
-    await processFind('complete', `ALL?church=${church}`);
+    await processFind(`ALL?church=${church}`);
 }
