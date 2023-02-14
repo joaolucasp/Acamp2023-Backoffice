@@ -40,6 +40,7 @@
     <script src="../../../api/getAllUsers.js"></script>
     <script src="../../../api/getUser.js"></script>
     <script src="../../../api/registerCheckin.js"></script>
+    <script src="../../../api/registerCheckout.js"></script>
     <script src="../../../api/getChurchCampers.js"></script>
     <script src="../../../utils/tools.js"></script>
 
@@ -234,16 +235,6 @@
                                     <td class="payment-result-search payment"></td>
                                 </tr>
 
-                                <tr id="rowCheckin">
-                                    <th scope="row">
-                                        <span class="field-result-search">
-                                            <i class="fa-solid fa-check"></i>
-                                            Check-in
-                                        </span>
-                                    </th>
-                                    <td class="checkin-result-search"></td>
-                                </tr>
-
                                 <tr>
                                     <th scope="row">
                                         <span class="field-result-search">
@@ -264,14 +255,39 @@
                                     <td class="medicines-result-search"></td>
                                 </tr>
 
+                                <tr id="rowCheckin" class="d-none">
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-check"></i>
+                                            Check-in
+                                        </span>
+                                    </th>
+                                    <td class="checkin-result-search"></td>
+                                </tr>
+
+                                <tr id="rowCheckout" class="d-none">
+                                    <th scope="row">
+                                        <span class="field-result-search">
+                                            <i class="fa-solid fa-check"></i>
+                                            Check-out
+                                        </span>
+                                    </th>
+                                    <td class="checkout-result-search"></td>
+                                </tr>
+
                             </tbody>
                         </table>
                     </div>
 
                     <div class="container d-grid gap-2">
-                        <button id="checkinButton" type="button" class="btn button-success" onclick="confirmCheckin();">
+                        <button id="checkinButton" type="button" class="btn button-success d-none" onclick="confirmCheckin();">
                             <i class="fa-regular fa-square-check"></i>
                             <span>Fazer check-in</span>
+                        </button>
+
+                        <button id="checkoutButton" type="button" class="btn button-success d-none" onclick="confirmCheckout();">
+                            <i class="fa-regular fa-square-check"></i>
+                            <span>Fazer check-out</span>
                         </button>
 
                         <button type="button" class="btn button-secondary" onclick="window.location='../church.html';">
@@ -287,6 +303,19 @@
                     </div>
 
                     <p>Check-in realizado com sucesso!</p>
+
+                    <button type="button" class="btn button-secondary" onclick="window.location='../church.html';">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </button>
+                </div>
+
+                <div id="checkoutSuccess" class="d-none">
+                    <div id="mainImagePage" class="container">
+                        <img class="img-fluid" src="../../../assets/images/success.png" alt="">
+                    </div>
+
+                    <p>Check-out realizado com sucesso!</p>
 
                     <button type="button" class="btn button-secondary" onclick="window.location='../church.html';">
                         <i class="fa-solid fa-arrow-left"></i>

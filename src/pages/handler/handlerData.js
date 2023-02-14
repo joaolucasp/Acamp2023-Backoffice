@@ -18,10 +18,17 @@ const manipulateSingleData = function (displayMethod, data) {
         // Checkin fluxes
         if (data.Checkin) {
             camperViewTable.getElementsByClassName('checkin-result-search')[0].innerText = data.Checkin;
-            document.getElementById('checkinButton').classList.add('d-none');
+            document.getElementById('rowCheckin').classList.remove('d-none');
+
+            if(data.Checkout) {
+                camperViewTable.getElementsByClassName('checkout-result-search')[0].innerText = data.Checkout;
+                document.getElementById('rowCheckout').classList.remove('d-none');
+            } else {
+                document.getElementById('checkoutButton').classList.remove('d-none');
+            }
 
         } else {
-            document.getElementById('rowCheckin').classList.add('d-none');
+            document.getElementById('checkinButton').classList.remove('d-none');
         }
     }
 }

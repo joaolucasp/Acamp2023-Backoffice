@@ -1,4 +1,4 @@
-const registerCheckin = async (id) => {
+const registerCheckout = async (id) => {
     const urlServer = `${urlAPIServer}${registerModule}${registerCheckoutEndpoint}${id}`
 
     const response = await fetch(urlServer, {

@@ -50,6 +50,10 @@ const nextStep = function (screen) {
             activeSection('checkinSuccess');
             break;
 
+        case 'checkoutSuccess':
+            activeSection('checkoutSuccess');
+            break;
+
         case 'notContent':
             activeSection('notContent');
             break;

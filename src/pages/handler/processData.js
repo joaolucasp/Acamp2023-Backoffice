@@ -117,6 +117,31 @@ const confirmCheckin = async () => {
     nextStep(nextScreen);
 }
 
+const confirmCheckout = async () => {
+    spinner.on();
+    disableSection('camperView');
+    const response = await registerCheckout(IDUser);
+
+    switch (response.status) {
+        case 201:
+            nextScreen = 'checkoutSuccess';
+            setCssDefaultContent();
+            break;
+
+        case 500:
+            nextScreen = 'serverError';
+            console.log('Internal server error');
+            break;
+
+        default:
+            console.log('Error');
+            break;
+    }
+
+    spinner.off();
+    nextStep(nextScreen);
+}
+
 const camperView = async (id) => {
     let idSimplify = id.split('-')[1];
     spinner.on();

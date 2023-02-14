@@ -5,7 +5,7 @@ const paymentModule = `payment/`
 const allUsersEndpoint = `getUsers/`
 const singleUserEndpoint = `getSingleUser/`
 const registerCheckinEndpoint = `checkin/`
-const registerCheckoutEndpoint = `checkin/`
+const registerCheckoutEndpoint = `checkout/`
 const getPaymentsEndpoint = `getPayments/`
 
 const getAge = function (date) {
