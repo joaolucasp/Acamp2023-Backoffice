@@ -39,7 +39,7 @@ html, body {
 }
 
 #pageContent {
-    padding-top: 90px;
+    padding-top: 160px;
     padding-bottom: 90px;
     max-width: var(--mainContainer-extra-small);
 }

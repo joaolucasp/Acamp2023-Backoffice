@@ -11,7 +11,9 @@ const manipulateSingleData = function (displayMethod, data) {
         document.getElementById('rowAdultResponsible1').classList.add('d-none');
         document.getElementById('rowAdultResponsible2').classList.add('d-none');
     } else {
-        camperViewTable.getElementsByClassName('adult-result-search')[0].innerText = data.NomeResponsavel
+        camperViewTable.getElementsByClassName('adult-result-search')[0].innerText = data.NomeResponsavel;
+        document.getElementById('rowAdultResponsible1').classList.remove('d-none');
+        document.getElementById('rowAdultResponsible2').classList.remove('d-none');
     }
 
     camperViewTable.getElementsByClassName('telefone-result-search')[0].innerText = `(${data.DDD}) ${data.Telefone}`;
@@ -28,16 +30,22 @@ const manipulateSingleData = function (displayMethod, data) {
         if (data.Checkin) {
             camperViewTable.getElementsByClassName('checkin-result-search')[0].innerText = data.Checkin;
             document.getElementById('rowCheckin').classList.remove('d-none');
+            document.getElementById('checkinButton').classList.add('d-none');
 
             if(data.Checkout) {
                 camperViewTable.getElementsByClassName('checkout-result-search')[0].innerText = data.Checkout;
                 document.getElementById('rowCheckout').classList.remove('d-none');
+                document.getElementById('checkoutButton').classList.add('d-none');
             } else {
                 document.getElementById('checkoutButton').classList.remove('d-none');
+                document.getElementById('rowCheckout').classList.add('d-none');
             }
 
         } else {
+            document.getElementById('rowCheckin').classList.add('d-none');
+            document.getElementById('rowCheckout').classList.add('d-none');
             document.getElementById('checkinButton').classList.remove('d-none');
+            document.getElementById('checkoutButton').classList.add('d-none');
         }
     }
 }
@@ -72,4 +80,12 @@ const createRow = function (table, data, position) {
     row.appendChild(church);
 
     table.appendChild(row);
+}
+
+const clearTable = function () {
+    const table = document.getElementById('multipleResultSearch');
+    
+    for (let i = table.rows.length - 1; i > 0; i--) {
+        table.deleteRow(i);
+    }
 }

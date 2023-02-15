@@ -123,16 +123,96 @@ const backStep = function () {
 
     for (let section in pageContent.children) {
         if (!pageContent.children[section].classList.contains('d-none')) {
-            if (pageContent.children[section].id == 'scannerScreen' || pageContent.children[section].id == 'codeRoute') {
-                disableSection(pageContent.children[section].id);
-                window.location.href = '../scan.html';
+            switch (pageContent.children[section].id) {
+                case 'nameRoute':
+                    disableSection('nameRoute');
+                    window.location.href = '../camper/camper.html';
+                    break;
 
-            } else {
-                disableSection(pageContent.children[section].id);
-                firstRoute();
+                case 'codeRoute':
+                    disableSection('codeRoute');
+                    localStorage.getItem('module') == 'checkin' ? window.location.href = '../checkin/checkin.html' : window.location.href = '../camper/camper.html';
+                    break;
+
+                case 'scannerScreen':
+                    disableSection('scannerScreen');
+                    localStorage.getItem('module') == 'checkin' ? window.location.href = '../checkin/checkin.html' : window.location.href = '../camper/camper.html';
+                    break;
+
+                case 'churchRoute':
+                    disableSection('churchRoute');
+                    window.location.href = '../church/church.html';
+                    break;
+
+                case 'tableView':
+                    disableSection('tableView');
+                    setCssDefaultContent();
+                    clearTable();
+                    
+                    switch (localStorage.getItem('module')) {
+                        case 'camper':
+                            activeSection('nameRoute');
+                            break;
+
+                        case 'church':
+                            localStorage.getItem('first-route') == 'find-by-church-route' ? activeSection('churchRoute') : window.location.href = '../church/church.html';
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    break;
+
+                case 'camperViewComplete':
+                    disableSection('camperViewComplete');
+
+                    switch (localStorage.getItem('first-route')) {
+                        case 'find-by-code-route':
+                            activeSection('codeRoute');
+                            setCssDefaultContent();
+                            break;
+
+                        case 'find-by-scanner-route':
+                            setCssDefaultContent();
+                            activeScannerScreen();
+                            break;
+
+                        default:
+                            activeSection('tableView')
+                            break;
+                    }
+
+                    break;
+
+                case 'camperViewSimplify':
+                    disableSection('camperViewSimplify');
+                    setCssDefaultContent();
+                    localStorage.getItem('first-route') == 'find-by-scanner-route' ? activeScannerScreen() : activeSection('codeRoute');
+                    break;
+
+                default:
+                    const moduleActive = localStorage.getItem('module');
+                    switch (moduleActive) {
+                        case 'checkin':
+                            window.location.href = '../checkin/checkin.html';
+                            break;
+
+                        case 'camper':
+                            window.location.href = '../camper/camper.html';
+                            break;
+
+                        case 'church':
+                            window.location.href = '../church/church.html';
+                            break;
+
+                        default:
+                            break;
+                    }
+                    break;
+
             }
 
-            return;
         }
     }
 }
