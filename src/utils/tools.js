@@ -1,4 +1,4 @@
-const urlAPIServer = `http://192.168.1.196:3001/`
+const urlAPIServer = `http://20.195.213.30:3001/`
 const userModule = `user/`
 const registerModule = `register/`
 const paymentModule = `payment/`
