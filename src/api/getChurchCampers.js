@@ -1,10 +1,7 @@
-const urlPaymentModule = `http://192.168.1.196:3001/payment/`
-const endpointPayment = `getPayments/`
-
 const getUsersByChurch = async (params) => {
     try {
         var urlServer = '';
-        params ? urlServer = `${urlPaymentModule}${endpointPayment}${params}` : urlServer = `${urlPaymentModule}${endpointPayment}`;
+        params ? urlServer = `${urlAPIServer}${paymentModule}${getPaymentsEndpoint}${params}` : urlServer = `${urlAPIServer}${paymentModule}${getPaymentsEndpoint}`;
 
         const response = await fetch(urlServer);
     
