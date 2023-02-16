@@ -53,6 +53,7 @@
     background: var(--tertiary-color);
     color: var(--white);
     border-radius: 10px;
+    z-index: 5;
 }
 
 .back-button i {
