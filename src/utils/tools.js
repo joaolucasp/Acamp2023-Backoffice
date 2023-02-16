@@ -1,4 +1,4 @@
-const urlAPIServer = `http://20.195.213.30:3001/`
+const urlAPIServer = `https://api-acamp2023-backoffice.herokuapp.com/`
 const userModule = `user/`
 const registerModule = `register/`
 const paymentModule = `payment/`
